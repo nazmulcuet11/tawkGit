@@ -8,9 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7CEA73C726F4B75000FE3DBA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CEA73C626F4B75000FE3DBA /* AppDelegate.swift */; };
-		7CEA73C926F4B75000FE3DBA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CEA73C826F4B75000FE3DBA /* SceneDelegate.swift */; };
 		7CEA73CB26F4B75000FE3DBA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CEA73CA26F4B75000FE3DBA /* ViewController.swift */; };
-		7CEA73CE26F4B75000FE3DBA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7CEA73CC26F4B75000FE3DBA /* Main.storyboard */; };
 		7CEA73D026F4B75200FE3DBA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7CEA73CF26F4B75200FE3DBA /* Assets.xcassets */; };
 		7CEA73D326F4B75200FE3DBA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7CEA73D126F4B75200FE3DBA /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
@@ -18,9 +16,7 @@
 /* Begin PBXFileReference section */
 		7CEA73C326F4B75000FE3DBA /* tawkGit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tawkGit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CEA73C626F4B75000FE3DBA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		7CEA73C826F4B75000FE3DBA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		7CEA73CA26F4B75000FE3DBA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		7CEA73CD26F4B75000FE3DBA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7CEA73CF26F4B75200FE3DBA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7CEA73D226F4B75200FE3DBA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7CEA73D426F4B75200FE3DBA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -56,15 +52,45 @@
 		7CEA73C526F4B75000FE3DBA /* tawkGit */ = {
 			isa = PBXGroup;
 			children = (
-				7CEA73C626F4B75000FE3DBA /* AppDelegate.swift */,
-				7CEA73C826F4B75000FE3DBA /* SceneDelegate.swift */,
-				7CEA73CA26F4B75000FE3DBA /* ViewController.swift */,
-				7CEA73CC26F4B75000FE3DBA /* Main.storyboard */,
-				7CEA73CF26F4B75200FE3DBA /* Assets.xcassets */,
-				7CEA73D126F4B75200FE3DBA /* LaunchScreen.storyboard */,
-				7CEA73D426F4B75200FE3DBA /* Info.plist */,
+				7CEA73DA26F4BA3900FE3DBA /* App */,
+				7CEA73DB26F4BA4E00FE3DBA /* View */,
+				7CEA73DC26F4BA6100FE3DBA /* Resource */,
 			);
 			path = tawkGit;
+			sourceTree = "<group>";
+		};
+		7CEA73DA26F4BA3900FE3DBA /* App */ = {
+			isa = PBXGroup;
+			children = (
+				7CEA73D426F4B75200FE3DBA /* Info.plist */,
+				7CEA73C626F4B75000FE3DBA /* AppDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		7CEA73DB26F4BA4E00FE3DBA /* View */ = {
+			isa = PBXGroup;
+			children = (
+				7CEA73DD26F4BA8200FE3DBA /* Launch */,
+				7CEA73CA26F4B75000FE3DBA /* ViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		7CEA73DC26F4BA6100FE3DBA /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				7CEA73CF26F4B75200FE3DBA /* Assets.xcassets */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		7CEA73DD26F4BA8200FE3DBA /* Launch */ = {
+			isa = PBXGroup;
+			children = (
+				7CEA73D126F4B75200FE3DBA /* LaunchScreen.storyboard */,
+			);
+			path = Launch;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -126,7 +152,6 @@
 			files = (
 				7CEA73D326F4B75200FE3DBA /* LaunchScreen.storyboard in Resources */,
 				7CEA73D026F4B75200FE3DBA /* Assets.xcassets in Resources */,
-				7CEA73CE26F4B75000FE3DBA /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -139,21 +164,12 @@
 			files = (
 				7CEA73CB26F4B75000FE3DBA /* ViewController.swift in Sources */,
 				7CEA73C726F4B75000FE3DBA /* AppDelegate.swift in Sources */,
-				7CEA73C926F4B75000FE3DBA /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		7CEA73CC26F4B75000FE3DBA /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				7CEA73CD26F4B75000FE3DBA /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		7CEA73D126F4B75200FE3DBA /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -288,7 +304,8 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6B84R8H562;
-				INFOPLIST_FILE = tawkGit/Info.plist;
+				INFOPLIST_FILE = tawkGit/App/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -307,7 +324,8 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6B84R8H562;
-				INFOPLIST_FILE = tawkGit/Info.plist;
+				INFOPLIST_FILE = tawkGit/App/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
