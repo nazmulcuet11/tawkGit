@@ -7,7 +7,16 @@
 
 import Foundation
 
-enum SearchMode {
-    case precise
+enum SearchMode: Int, CaseIterable {
     case contains
+    case precise
+
+    var title: String {
+        switch self {
+            case .contains:
+                return "Contains"
+            case .precise:
+                return "Exact Match"
+        }
+    }
 }

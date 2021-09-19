@@ -18,7 +18,7 @@ extension User {
             id: networkModel.id,
             username: networkModel.login,
             avatar: avatar,
-            hasNote: false
+            note: nil
         )
     }
 }

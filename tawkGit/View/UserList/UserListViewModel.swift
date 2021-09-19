@@ -39,15 +39,18 @@ class UserListPresenter {
     }
 
     func startSearching() {
-        self.mode = .search
+        mode = .search
+        view?.reloadItems()
     }
 
     func stopSearching() {
-        self.mode = .normal
+        mode = .normal
+        view?.reloadItems()
     }
 
     func search(searchTerm: String, searchMode: SearchMode) {
-
+        filteredUsers = users.filter({ $0.matches(with: searchTerm, searchMode: searchMode) })
+        view?.reloadItems()
     }
 
     func loadUsers() {
@@ -84,8 +87,35 @@ class UserListPresenter {
         }
     }
 
-    var items: [TableViewItem] {
-        return users
+
+    var itemCount: Int {
+        switch mode {
+            case .normal:
+                return users.count
+            case .search:
+                return filteredUsers.count
+        }
+    }
+
+    func item(at index: Int) -> TableViewItem {
+        let item: TableViewItem
+        switch mode {
+            case .normal:
+                item = users[index]
+            case .search:
+                item = filteredUsers[index]
+        }
+        return item
+    }
+
+    func reachedLastItem() {
+        switch mode {
+            case .normal:
+                loadUsers()
+            case .search:
+                break
+        }
+
     }
 
     // MARK: - Helpers

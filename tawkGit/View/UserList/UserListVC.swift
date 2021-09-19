@@ -25,6 +25,9 @@ class UserListVC: UIViewController {
     private lazy var searchController: UISearchController = {
         let searchController = UISearchController(searchResultsController: nil)
         searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.scopeButtonTitles = SearchMode.allCases.map({ $0.title })
+        searchController.searchBar.selectedScopeButtonIndex = SearchMode.contains.rawValue
+        searchController.delegate = self
         return searchController
     }()
 
@@ -91,15 +94,15 @@ class UserListVC: UIViewController {
 
 extension UserListVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return presenter.items.count
+        return presenter.itemCount
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let item = presenter.items[indexPath.row]
+        let item = presenter.item(at: indexPath.row)
 
-        // tell presenter to load more data if reached last cell
-        if indexPath.row == presenter.items.count - 1 {
-            presenter.loadUsers()
+        // tell presenter that user reached last item
+        if indexPath.row + 1 == presenter.itemCount {
+            presenter.reachedLastItem()
         }
 
         return item.cell(for: tableView, at: indexPath)
@@ -112,9 +115,22 @@ extension UserListVC: UITableViewDelegate {
     }
 }
 
+extension UserListVC: UISearchControllerDelegate {
+    func didPresentSearchController(_ searchController: UISearchController) {
+        presenter.startSearching()
+    }
+
+    func didDismissSearchController(_ searchController: UISearchController) {
+        presenter.stopSearching()
+    }
+}
+
 extension UserListVC: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
-        print("update search result")
+        let searchScopeIndex = searchController.searchBar.selectedScopeButtonIndex
+        guard let searchTerm = searchController.searchBar.text else { return }
+        guard let searchMode = SearchMode(rawValue: searchScopeIndex) else { return }
+        presenter.search(searchTerm: searchTerm, searchMode: searchMode)
     }
 }
 
@@ -137,8 +153,8 @@ extension UserListVC: UserListView {
     }
 
     func appendItems(newItems: [TableViewItem]) {
-        let oldCount = presenter.items.count - newItems.count
-        let newIndexPaths = Array(oldCount..<presenter.items.count)
+        let oldCount = presenter.itemCount - newItems.count
+        let newIndexPaths = Array(oldCount..<presenter.itemCount)
             .map({ IndexPath(row: $0, section: 0) })
 
         tableView.insertRows(at: newIndexPaths, with: .automatic)
