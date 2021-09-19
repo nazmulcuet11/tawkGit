@@ -8,23 +8,25 @@
 import Foundation
 
 class BackEndUserService: UserService {
-    private  var currentId = 0
-    private var queue = DispatchQueue(label: "NETWORK", qos: .background)
+    private let baseURL: URL
+    private let client: HTTPClient
+
+    init(
+        baseURL: URL,
+        client: HTTPClient
+    ) {
+        self.baseURL = baseURL
+        self.client = client
+    }
 
     func getUsers(since: Int, completion: @escaping Completion<[UserNetworkModel]>) {
-        queue.asyncAfter(deadline: .now() + 2) {
-            var users = [UserNetworkModel]()
-            for _ in 0..<30 {
-                let user = UserNetworkModel(
-                    id: self.currentId,
-                    login: "user\(self.currentId + 1)",
-                    avatarURL: nil
-                )
-                users.append(user)
-                self.currentId += 1
-            }
-            completion(.success(users))
-        }
+
+        let request = HTTPRequest(
+            url: baseURL.appendingPathComponent("users"),
+            queryParams: ["since": since]
+        )
+
+        client.response(for: request, completion: completion)
     }
 
     func getUserProfile(login: String, completion: @escaping Completion<UserProfileNetworkModel>) {

@@ -15,7 +15,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
         let window = UIWindow()
-        let service = BackEndUserService()
+        let service = BackEndUserService(
+            baseURL: AppConfig.GithubAPI.baseURL,
+            client: HTTPClient()
+        )
         let repository = CoreDataUserRepository()
         let presenter = UserListPresenter(
             service: service,
