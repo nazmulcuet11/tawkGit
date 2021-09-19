@@ -7,12 +7,18 @@
 
 import UIKit
 
+protocol TableViewItem {
+    func cell(for tableView: UITableView, at indexPath: IndexPath) -> UITableViewCell
+}
+
 class UserListVC: UIViewController {
 
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.separatorStyle = .none
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = 80
         return tableView
     }()
 
@@ -22,9 +28,32 @@ class UserListVC: UIViewController {
         return searchController
     }()
 
-    override func loadView() {
-        super.loadView()
+    private lazy var spinner: UIActivityIndicatorView = {
+        let spinner = UIActivityIndicatorView(style: .medium)
+        spinner.startAnimating()
+        spinner.frame = CGRect(
+            x: CGFloat(0),
+            y: CGFloat(0),
+            width: tableView.bounds.width,
+            height: CGFloat(44)
+        )
+        return spinner
+    }()
+
+    private var presenter: UserListPresenter
+
+    init(
+        presenter: UserListPresenter
+    ) {
+        self.presenter = presenter
+
+        super.init(nibName: nil, bundle: nil)
+
         setupUI()
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 
     override func viewDidLoad() {
@@ -40,6 +69,8 @@ class UserListVC: UIViewController {
         tableView.delegate = self
 
         searchController.searchResultsUpdater = self
+
+        presenter.loadUsers()
     }
 
     // MARK: - Helpers
@@ -60,17 +91,18 @@ class UserListVC: UIViewController {
 
 extension UserListVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 50
+        return presenter.items.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.row % 3 == 0 {
-            let cell = tableView.dequeueReusableCell(NoteUserCell.self, for: indexPath)
-            return cell
-        } else {
-            let cell = tableView.dequeueReusableCell(UserCell.self, for: indexPath)
-            return cell
+        let item = presenter.items[indexPath.row]
+
+        // tell presenter to load more data if reached last cell
+        if indexPath.row == presenter.items.count - 1 {
+            presenter.loadUsers()
         }
+
+        return item.cell(for: tableView, at: indexPath)
     }
 }
 
@@ -83,5 +115,32 @@ extension UserListVC: UITableViewDelegate {
 extension UserListVC: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         print("update search result")
+    }
+}
+
+extension UserListVC: UserListView {
+    func showLoader() {
+        tableView.tableFooterView = spinner
+    }
+
+    func hideLoader() {
+        tableView.tableFooterView = nil
+    }
+
+    func reloadItems() {
+        tableView.reloadData()
+    }
+
+    func reloadItems(at indexes: [Int]) {
+        let indexPathsToReload = indexes.map({ IndexPath(row: $0, section: 0) })
+        tableView.reloadRows(at: indexPathsToReload, with: .automatic)
+    }
+
+    func appendItems(newItems: [TableViewItem]) {
+        let oldCount = presenter.items.count - newItems.count
+        let newIndexPaths = Array(oldCount..<presenter.items.count)
+            .map({ IndexPath(row: $0, section: 0) })
+
+        tableView.insertRows(at: newIndexPaths, with: .automatic)
     }
 }

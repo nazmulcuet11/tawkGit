@@ -10,7 +10,7 @@ import Foundation
 struct UserProfileNetworkModel: Decodable {
     let id: Int
     let login: String
-    let avatarURL: String
+    let avatarURL: String?
     let followers: Int
     let following: Int
     let name: String

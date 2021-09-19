@@ -10,7 +10,7 @@ import Foundation
 struct UserNetworkModel: Decodable {
     let id: Int
     let login: String
-    let avatarURL: String
+    let avatarURL: String?
 
     enum CodingKeys: String, CodingKey {
         case id

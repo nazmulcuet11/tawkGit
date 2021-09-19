@@ -15,7 +15,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
         let window = UIWindow()
-        window.rootViewController = NavigationController(rootViewController: UserListVC())
+        let service = BackEndUserService()
+        let repository = CoreDataUserRepository()
+        let presenter = UserListPresenter(
+            service: service,
+            repository: repository
+        )
+        let userListVC = UserListVC(presenter: presenter)
+        presenter.view = userListVC
+        
+        window.rootViewController = NavigationController(rootViewController: userListVC)
         window.makeKeyAndVisible()
 
         self.window = window

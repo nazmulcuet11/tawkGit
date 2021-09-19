@@ -30,6 +30,8 @@ class UserCell: UITableViewCell {
         label.numberOfLines = 1
         label.font = UIFont.preferredFont(forTextStyle: .headline)
         label.text = "Username"
+        label.setContentHuggingPriority(.defaultHigh, for: .vertical)
+        label.setContentCompressionResistancePriority(.defaultHigh, for: .vertical)
         return label
     }()
 
@@ -39,6 +41,8 @@ class UserCell: UITableViewCell {
         label.numberOfLines = 0
         label.font = UIFont.preferredFont(forTextStyle: .body)
         label.text = "Details"
+        label.setContentHuggingPriority(.defaultLow, for: .vertical)
+        label.setContentCompressionResistancePriority(.defaultLow, for: .vertical)
         return label
     }()
 
@@ -119,5 +123,10 @@ class UserCell: UITableViewCell {
 
         containerStack.addArrangedSubview(avatarImageView)
         containerStack.addArrangedSubview(labelContainerView)
+    }
+
+    func configure(with user: User) {
+        nameLabel.text = user.username
+        detailsLabel.text = "\(user.id)"
     }
 }
