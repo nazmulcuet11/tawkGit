@@ -7,7 +7,7 @@
 
 import Foundation
 
-class HTTPNetworkOperation: AsyncOperation {
+class DataTaskOperation: AsyncOperation {
     typealias Completion =  (Data?, URLResponse?, Error?) -> Void
 
     let session: URLSession
@@ -30,7 +30,7 @@ class HTTPNetworkOperation: AsyncOperation {
     }
 
     override func main() {
-        let dataTask = session.dataTask(with: request) {
+        let task = session.dataTask(with: request) {
             [weak self] data, response, error in
             guard let self = self else { return }
 
@@ -38,6 +38,6 @@ class HTTPNetworkOperation: AsyncOperation {
             self.state = .finished
         }
 
-        dataTask.resume()
+        task.resume()
     }
 }

@@ -11,22 +11,15 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var factory: AppFactory?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
+        let factory = AppFactory()
+        self.factory = factory
+
         let window = UIWindow()
-        let service = BackEndUserService(
-            baseURL: AppConfig.GithubAPI.baseURL,
-            client: HTTPClient()
-        )
-        let repository = CoreDataUserRepository()
-        let presenter = UserListPresenter(
-            service: service,
-            repository: repository
-        )
-        let userListVC = UserListVC(presenter: presenter)
-        presenter.view = userListVC
-        
+        let userListVC = factory.getUserListVC()
         window.rootViewController = NavigationController(rootViewController: userListVC)
         window.makeKeyAndVisible()
 
@@ -35,5 +28,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 
+    func applicationDidReceiveMemoryWarning(_ application: UIApplication) {
+        factory?.imageLoader.clearCache()
+    }
 }
 

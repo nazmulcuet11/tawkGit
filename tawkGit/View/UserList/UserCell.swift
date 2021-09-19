@@ -19,6 +19,7 @@ class UserCell: UITableViewCell {
             imageView.widthAnchor.constraint(equalToConstant: 50),
         ])
         imageView.layer.cornerRadius = 25
+        imageView.clipsToBounds = true
         imageView.layer.borderWidth = 1
         imageView.layer.borderColor = UIColor.black.cgColor
         return imageView
@@ -128,5 +129,13 @@ class UserCell: UITableViewCell {
     func configure(with user: User) {
         nameLabel.text = user.username
         detailsLabel.text = "\(user.id)"
+        if let avatarURL = user.avatarURL {
+            avatarImageView.setImage(
+                with: avatarURL,
+                placeholder: UIImage(systemName: "person.crop.circle")
+            )
+        } else {
+            avatarImageView.image = UIImage(systemName: "person.crop.circle")
+        }
     }
 }

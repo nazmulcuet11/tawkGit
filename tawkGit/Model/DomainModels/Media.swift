@@ -9,23 +9,19 @@ import Foundation
 
 class Media {
     var remoteURL: URL
-    var localPath: String?
-    var thumbLocalPath: String?
+    var localURL: URL
 
     init(
         remoteURL: URL,
-        localPath: String? = nil,
-        thumbLocalPath: String? = nil
+        localURL: URL
     ) {
         self.remoteURL = remoteURL
-        self.localPath = localPath
-        self.thumbLocalPath = thumbLocalPath
+        self.localURL = localURL
     }
 
     convenience init?(
         remoteURLStr: String,
-        localPath: String? = nil,
-        thumbLocalPath: String? = nil
+        localURL: URL
     ) {
         guard let remoteURL = URL(string: remoteURLStr) else {
             return nil
@@ -33,8 +29,7 @@ class Media {
 
         self.init(
             remoteURL: remoteURL,
-            localPath: localPath,
-            thumbLocalPath: thumbLocalPath
+            localURL: localURL
         )
     }
 }

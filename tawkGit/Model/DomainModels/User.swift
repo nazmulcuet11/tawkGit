@@ -11,7 +11,7 @@ class User: Hashable {
 
     var id: Int
     var username: String
-    var avatar: Media?
+    var avatarURL: String?
     var note: String?
 
     var hasNote: Bool {
@@ -24,12 +24,12 @@ class User: Hashable {
     init(
         id: Int,
         username: String,
-        avatar: Media?,
+        avatarURL: String?,
         note: String?
     ) {
         self.id = id
         self.username = username
-        self.avatar = avatar
+        self.avatarURL = avatarURL
         self.note = note
     }
 
