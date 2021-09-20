@@ -26,7 +26,7 @@ class UserListPresenter {
     private(set) var users = [User]()
     private(set) var filteredUsers = [User]()
 
-    private let fetchLimit = 30
+    private var fetchLimit = 30
 
     private var lastUserId: Int { users.last?.id ?? 0 }
 
@@ -63,23 +63,24 @@ class UserListPresenter {
             [weak self] users in
             guard let self = self else { return }
 
-            DispatchQueue.main.async {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                 self.view?.hideLoader()
             }
 
-            self.updateUsers(newUsers: users)
+            self.updateUserList(newUsers: users)
         }
 
         service.getUsers(since: lastUserId) {
             [weak self] result in
             guard let self = self else { return }
 
-            DispatchQueue.main.async {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                 self.view?.hideLoader()
             }
-            
+
             switch result {
                 case .success(let networkUsers):
+                    self.fetchLimit = networkUsers.count
                     self.processNetworkUsers(networkUsers)
                 case .failure(let error):
                     print("Error fetching data: \(error.localizedDescription)")
@@ -123,10 +124,11 @@ class UserListPresenter {
     private func processNetworkUsers(_ networkUsers: [UserNetworkModel]) {
         let users = networkUsers
             .map({ User(from: $0) })
-        updateUsers(newUsers: users)
+        repository.saveUsers(users)
+        updateUserList(newUsers: users)
     }
 
-    private func updateUsers(newUsers: [User]) {
+    private func updateUserList(newUsers: [User]) {
         DispatchQueue.main.async {
             [weak self] in
             guard let self = self else { return }

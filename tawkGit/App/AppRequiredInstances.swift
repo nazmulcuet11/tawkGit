@@ -15,10 +15,12 @@ class AppFactory {
     let fileManager: FileManager
     let httpClient: HTTPClient
     let downloadClient: DownloadClient
+    let coreDataWritingQueue: DispatchQueue
     let coreDataStack: CoreDataStack
     let mediaRepository: MediaRepository
     let mediaManager: MediaManager
     let imageLoader: ImageLoader
+    let userRepository: UserRepository
 
     init() {
         dataSession = .shared
@@ -43,8 +45,11 @@ class AppFactory {
             queue: networkingQueue
         )
 
+        coreDataWritingQueue = DispatchQueue(label: "CORE_DATA_WRITING_QUEUE")
+
         coreDataStack = CoreDataStack(
-            modelName: AppConfig.CoreData.modelName
+            modelName: AppConfig.CoreData.modelName,
+            writingQueue: coreDataWritingQueue
         )
 
         mediaRepository = CoreDataMediaRepository(
@@ -60,6 +65,10 @@ class AppFactory {
         imageLoader = ImageLoader(
             mediaManager: mediaManager
         )
+
+        userRepository = CoreDataUserRepository(
+            stack: coreDataStack
+        )
     }
 
     func getUserListVC() -> UserListVC {
@@ -67,10 +76,9 @@ class AppFactory {
             baseURL: AppConfig.GithubAPI.baseURL,
             client: httpClient
         )
-        let repository = CoreDataUserRepository()
         let presenter = UserListPresenter(
             service: service,
-            repository: repository
+            repository: userRepository
         )
         let userListVC = UserListVC(presenter: presenter)
         presenter.view = userListVC

@@ -10,30 +10,30 @@ import Foundation
 class UserProfile {
     var id: Int
     var username: String
-    var avatar: Media?
+    var avatarURL: String?
     var followers: Int
     var following: Int
-    var name: String
-    var company: String
-    var blog: String
-    var location: String
+    var name: String?
+    var company: String?
+    var blog: String?
+    var location: String?
     var note: String?
 
     init(
         id: Int,
         username: String,
-        avatar: Media?,
+        avatarURL: String?,
         followers: Int,
         following: Int,
-        name: String,
-        company: String,
-        blog: String,
-        location: String,
+        name: String?,
+        company: String?,
+        blog: String?,
+        location: String?,
         note: String?
     ) {
         self.id = id
         self.username = username
-        self.avatar = avatar
+        self.avatarURL = avatarURL
         self.followers = followers
         self.following = following
         self.name = name

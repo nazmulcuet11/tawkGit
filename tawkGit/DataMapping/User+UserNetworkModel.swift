@@ -13,7 +13,8 @@ extension User {
             id: networkModel.id,
             username: networkModel.login,
             avatarURL: networkModel.avatarURL,
-            note: nil
+            note: nil,
+            profileVisited: false
         )
     }
 }

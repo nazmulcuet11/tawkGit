@@ -13,6 +13,7 @@ class User: Hashable {
     var username: String
     var avatarURL: String?
     var note: String?
+    var profileVisited: Bool
 
     var hasNote: Bool {
         guard let note = note else {
@@ -25,12 +26,14 @@ class User: Hashable {
         id: Int,
         username: String,
         avatarURL: String?,
-        note: String?
+        note: String?,
+        profileVisited: Bool
     ) {
         self.id = id
         self.username = username
         self.avatarURL = avatarURL
         self.note = note
+        self.profileVisited = profileVisited
     }
 
     func hash(into hasher: inout Hasher) {

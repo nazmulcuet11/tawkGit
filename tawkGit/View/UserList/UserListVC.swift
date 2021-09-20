@@ -51,8 +51,6 @@ class UserListVC: UIViewController {
         self.presenter = presenter
 
         super.init(nibName: nil, bundle: nil)
-
-        setupUI()
     }
 
     required init?(coder: NSCoder) {
@@ -64,6 +62,8 @@ class UserListVC: UIViewController {
 
         title = "Users"
         navigationController?.navigationBar.prefersLargeTitles = true
+
+        setupUI()
 
         tableView.registerCell(UserCell.self)
         tableView.registerCell(NoteUserCell.self)

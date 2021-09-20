@@ -27,27 +27,31 @@ class ImageLoader {
         }
 
         mediaManager.getMedia(remoteURL: url) {
-            [weak self] media in
+            media in
 
-            guard let self = self,
-                  let media = media
-            else {
+            guard let media = media else {
                 completion(nil)
                 return
             }
 
             let localURL = self.mediaManager.localFileURL(for: media)
 
-            guard let data = try? Data(contentsOf: localURL),
-                  let image = UIImage(data: data)
-            else {
+            guard let data = try? Data(contentsOf: localURL) else {
                 completion(nil)
                 return
             }
 
-            self.cache[url] = image
-
             DispatchQueue.main.async {
+                [weak self] in
+
+                guard let self = self,
+                      let image = UIImage(data: data)
+                else {
+                    completion(nil)
+                    return
+                }
+                
+                self.cache[url] = image
                 completion(image)
             }
         }
