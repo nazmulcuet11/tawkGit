@@ -5,7 +5,7 @@
 //  Created by Nazmul Islam on 18/9/21.
 //
 
-import UIKit
+import Foundation
 
 protocol UserListView: AnyObject {
     func showLoader()
@@ -26,7 +26,7 @@ class UserListPresenter {
     private(set) var users = [User]()
     private(set) var filteredUsers = [User]()
 
-    private var fetchLimit = 30
+    private let fetchLimit = 30
 
     private var lastUserId: Int { users.last?.id ?? 0 }
 
@@ -80,7 +80,6 @@ class UserListPresenter {
 
             switch result {
                 case .success(let networkUsers):
-                    self.fetchLimit = networkUsers.count
                     self.processNetworkUsers(networkUsers)
                 case .failure(let error):
                     print("Error fetching data: \(error.localizedDescription)")

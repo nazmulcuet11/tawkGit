@@ -13,10 +13,10 @@ struct UserProfileNetworkModel: Decodable {
     let avatarURL: String?
     let followers: Int
     let following: Int
-    let name: String
-    let company: String
-    let blog: String
-    let location: String
+    let name: String?
+    let company: String?
+    let blog: String?
+    let location: String?
 
     enum CodingKeys: String, CodingKey {
         case id

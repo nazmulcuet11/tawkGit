@@ -14,6 +14,7 @@ protocol UserRepository {
     func saveUsers(_ users: [User], completion: Completion<Bool>?)
     func getAllUsers(completion: @escaping Completion<[User]>)
     func getUsers(since: Int, limit: Int, completion: @escaping Completion<[User]>)
+    func saveUserProfile(_ userProfile: UserProfile, completion: Completion<Bool>?)
     func getUserProfile(login: String, completion: @escaping Completion<UserProfile?>)
     func searchUsers(searchTerm: String, searchMode: SearchMode, completion: @escaping Completion<[User]>)
 }
@@ -25,5 +26,9 @@ extension UserRepository {
 
     func saveUsers(_ users: [User], completion: Completion<Bool>? = nil) {
         saveUsers(users, completion: completion)
+    }
+
+    func saveUserProfile(_ userProfile: UserProfile, completion: Completion<Bool>? = nil) {
+        saveUserProfile(userProfile, completion: completion)
     }
 }

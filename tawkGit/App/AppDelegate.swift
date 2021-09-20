@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.factory = factory
 
         let window = UIWindow()
-        let userListVC = factory.getUserListVC()
+        let userListVC = factory.getUserProfileVC()
         window.rootViewController = NavigationController(rootViewController: userListVC)
         window.makeKeyAndVisible()
 

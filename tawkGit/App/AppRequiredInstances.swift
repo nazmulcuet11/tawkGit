@@ -85,4 +85,20 @@ class AppFactory {
 
         return userListVC
     }
+
+    func getUserProfileVC() -> UserProfileVC {
+        let service = BackEndUserService(
+            baseURL: AppConfig.GithubAPI.baseURL,
+            client: httpClient
+        )
+        let presenter = UserProfilePresenter(
+            service: service,
+            repository: userRepository,
+            username: "mojombo"
+        )
+        let vc = UserProfileVC.instantiate()
+        vc.presenter = presenter
+        presenter.view = vc
+        return vc
+    }
 }

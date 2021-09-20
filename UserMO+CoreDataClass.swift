@@ -24,4 +24,24 @@ public class UserMO: NSManagedObject {
             profileVisited: profileVisited
         )
     }
+
+    func toUserProfile() -> UserProfile? {
+        guard let username = username
+        else {
+            return nil
+        }
+
+        return UserProfile(
+            id: Int(userId),
+            username: username,
+            avatarURL: avatarURL,
+            followers: Int(followers),
+            following: Int(following),
+            name: name,
+            company: company,
+            blog: blog,
+            location: location,
+            note: note
+        )
+    }
 }

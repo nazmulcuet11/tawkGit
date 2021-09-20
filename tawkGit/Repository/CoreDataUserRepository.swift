@@ -81,11 +81,37 @@ class CoreDataUserRepository: UserRepository {
     }
 
     func getUserProfile(login: String, completion: @escaping Completion<UserProfile?>) {
+        stack.perform(on: .main) { context in
 
+            let request: NSFetchRequest<UserMO> = UserMO.fetchRequest()
+
+            let predicate = NSPredicate(format: "%K == %@", #keyPath(UserMO.username), login)
+            request.predicate = predicate
+            do {
+                guard let userMO = try context.fetch(request).first else {
+                    completion(nil)
+                    return
+                }
+                let user = userMO.toUserProfile()
+                completion(user)
+            } catch {
+                print(error.localizedDescription)
+                completion(nil)
+            }
+        }
+    }
+
+    func saveUserProfile(_ userProfile: UserProfile, completion: Completion<Bool>?) {
+        stack.perform(on: .background) { context in
+
+            self.populateUser(userProfile, in: context)
+            self.stack.saveContext()
+            completion?(true)
+        }
     }
 
     func searchUsers(searchTerm: String, searchMode: SearchMode, completion: @escaping Completion<[User]>) {
-
+        fatalError("Not Implemented")
     }
 
     // MARK: - Helpers
@@ -116,5 +142,25 @@ class CoreDataUserRepository: UserRepository {
         userMO.avatarURL = user.avatarURL
         userMO.note = user.note
         userMO.profileVisited = user.profileVisited
+    }
+
+    private func populateUser(_ userProfile: UserProfile, in context: NSManagedObjectContext) {
+        let userMO: UserMO
+        if let existingUserMO = getUserMO(id: userProfile.id, context: context) {
+            userMO = existingUserMO
+        } else {
+            userMO = UserMO(context: context)
+        }
+
+        userMO.userId = Int64(userProfile.id)
+        userMO.username = userProfile.username
+        userMO.avatarURL = userProfile.avatarURL
+        userMO.note = userProfile.note
+        userMO.followers = Int64(userProfile.followers)
+        userMO.following = Int64(userProfile.following)
+        userMO.name = userProfile.name
+        userMO.company = userProfile.company
+        userMO.blog = userProfile.blog
+        userMO.location = userProfile.location
     }
 }

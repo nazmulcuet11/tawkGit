@@ -30,6 +30,10 @@ class BackEndUserService: UserService {
     }
 
     func getUserProfile(login: String, completion: @escaping Completion<UserProfileNetworkModel>) {
+        let request = HTTPRequest(
+            url: baseURL.appendingPathComponent("users").appendingPathComponent(login)
+        )
 
+        client.response(for: request, completion: completion)
     }
 }
