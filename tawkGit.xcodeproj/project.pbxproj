@@ -23,6 +23,10 @@
 		7C0EA05126F61CE7001457C4 /* User+TableViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0EA05026F61CE7001457C4 /* User+TableViewItem.swift */; };
 		7C0EA05326F62060001457C4 /* CoreDataUserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0EA05226F62060001457C4 /* CoreDataUserRepository.swift */; };
 		7C0EA05526F623B8001457C4 /* BackendUserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0EA05426F623B8001457C4 /* BackendUserService.swift */; };
+		7C33611526F8515800688EC1 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C33611426F8515800688EC1 /* CoreDataStack.swift */; };
+		7C33611826F8709B00688EC1 /* MediaMO+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C33611626F8709B00688EC1 /* MediaMO+CoreDataClass.swift */; };
+		7C33611926F8709B00688EC1 /* MediaMO+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C33611726F8709B00688EC1 /* MediaMO+CoreDataProperties.swift */; };
+		7C33611B26F8747400688EC1 /* FileManager+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C33611A26F8747400688EC1 /* FileManager+Extension.swift */; };
 		7CD7EDEE26F739C30004DD70 /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD7EDED26F739C30004DD70 /* HTTPClient.swift */; };
 		7CD7EDF026F73EB10004DD70 /* AsyncOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD7EDEF26F73EB10004DD70 /* AsyncOperation.swift */; };
 		7CD7EDF226F742CA0004DD70 /* DataTaskOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD7EDF126F742CA0004DD70 /* DataTaskOperation.swift */; };
@@ -37,6 +41,7 @@
 		7CD7EE0626F7B2410004DD70 /* CoreDataMediaRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD7EE0526F7B2410004DD70 /* CoreDataMediaRepository.swift */; };
 		7CD7EE0826F7B3DD0004DD70 /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD7EE0726F7B3DD0004DD70 /* UIImageView+Extension.swift */; };
 		7CD7EE0A26F7BA510004DD70 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD7EE0926F7BA510004DD70 /* ImageLoader.swift */; };
+		7CD7EE0D26F7C0BD0004DD70 /* tawk_git.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7CD7EE0B26F7C0BD0004DD70 /* tawk_git.xcdatamodeld */; };
 		7CEA73C726F4B75000FE3DBA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CEA73C626F4B75000FE3DBA /* AppDelegate.swift */; };
 		7CEA73CB26F4B75000FE3DBA /* UserListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CEA73CA26F4B75000FE3DBA /* UserListVC.swift */; };
 		7CEA73D026F4B75200FE3DBA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7CEA73CF26F4B75200FE3DBA /* Assets.xcassets */; };
@@ -64,6 +69,10 @@
 		7C0EA05026F61CE7001457C4 /* User+TableViewItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+TableViewItem.swift"; sourceTree = "<group>"; };
 		7C0EA05226F62060001457C4 /* CoreDataUserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataUserRepository.swift; sourceTree = "<group>"; };
 		7C0EA05426F623B8001457C4 /* BackendUserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackendUserService.swift; sourceTree = "<group>"; };
+		7C33611426F8515800688EC1 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		7C33611626F8709B00688EC1 /* MediaMO+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MediaMO+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		7C33611726F8709B00688EC1 /* MediaMO+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MediaMO+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		7C33611A26F8747400688EC1 /* FileManager+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager+Extension.swift"; sourceTree = "<group>"; };
 		7CD7EDED26F739C30004DD70 /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
 		7CD7EDEF26F73EB10004DD70 /* AsyncOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncOperation.swift; sourceTree = "<group>"; };
 		7CD7EDF126F742CA0004DD70 /* DataTaskOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTaskOperation.swift; sourceTree = "<group>"; };
@@ -78,6 +87,7 @@
 		7CD7EE0526F7B2410004DD70 /* CoreDataMediaRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataMediaRepository.swift; sourceTree = "<group>"; };
 		7CD7EE0726F7B3DD0004DD70 /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
 		7CD7EE0926F7BA510004DD70 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
+		7CD7EE0C26F7C0BD0004DD70 /* tawk_git.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = tawk_git.xcdatamodel; sourceTree = "<group>"; };
 		7CEA73C326F4B75000FE3DBA /* tawkGit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tawkGit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CEA73C626F4B75000FE3DBA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7CEA73CA26F4B75000FE3DBA /* UserListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListVC.swift; sourceTree = "<group>"; };
@@ -121,6 +131,7 @@
 				7CD7EE0926F7BA510004DD70 /* ImageLoader.swift */,
 				7C0EA03326F5A110001457C4 /* UITableView+Convenience.swift */,
 				7CD7EE0726F7B3DD0004DD70 /* UIImageView+Extension.swift */,
+				7C33611A26F8747400688EC1 /* FileManager+Extension.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -165,6 +176,23 @@
 			path = DataMapping;
 			sourceTree = "<group>";
 		};
+		7C33611226F8512500688EC1 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				7C33611626F8709B00688EC1 /* MediaMO+CoreDataClass.swift */,
+				7C33611726F8709B00688EC1 /* MediaMO+CoreDataProperties.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		7C33611326F8513A00688EC1 /* Schema */ = {
+			isa = PBXGroup;
+			children = (
+				7CD7EE0B26F7C0BD0004DD70 /* tawk_git.xcdatamodeld */,
+			);
+			path = Schema;
+			sourceTree = "<group>";
+		};
 		7CD7EDEC26F739A80004DD70 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
@@ -175,6 +203,16 @@
 				7CD7EDFD26F7A5600004DD70 /* DownloadCleint.swift */,
 			);
 			path = Networking;
+			sourceTree = "<group>";
+		};
+		7CD7EE0E26F7C0C40004DD70 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				7C33611226F8512500688EC1 /* Models */,
+				7C33611326F8513A00688EC1 /* Schema */,
+				7C33611426F8515800688EC1 /* CoreDataStack.swift */,
+			);
+			path = CoreData;
 			sourceTree = "<group>";
 		};
 		7CEA73BA26F4B75000FE3DBA = {
@@ -197,6 +235,7 @@
 			isa = PBXGroup;
 			children = (
 				7CEA73DA26F4BA3900FE3DBA /* App */,
+				7CD7EE0E26F7C0C40004DD70 /* CoreData */,
 				7C0EA04D26F5EDE5001457C4 /* DataMapping */,
 				7CEA73DE26F4BBF900FE3DBA /* Model */,
 				7CD7EDEC26F739A80004DD70 /* Networking */,
@@ -346,6 +385,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C33611826F8709B00688EC1 /* MediaMO+CoreDataClass.swift in Sources */,
 				7C0EA04026F5E5F0001457C4 /* Media.swift in Sources */,
 				7C0EA05326F62060001457C4 /* CoreDataUserRepository.swift in Sources */,
 				7C0EA03426F5A110001457C4 /* UITableView+Convenience.swift in Sources */,
@@ -368,11 +408,15 @@
 				7CD7EDF026F73EB10004DD70 /* AsyncOperation.swift in Sources */,
 				7CD7EDF226F742CA0004DD70 /* DataTaskOperation.swift in Sources */,
 				7CD7EE0426F7ADDF0004DD70 /* MediaRepository.swift in Sources */,
+				7C33611B26F8747400688EC1 /* FileManager+Extension.swift in Sources */,
 				7C0EA04A26F5E6F1001457C4 /* UserRepository.swift in Sources */,
 				7C0EA04226F5E60B001457C4 /* User.swift in Sources */,
 				7C0EA03026F5998B001457C4 /* UserCell.swift in Sources */,
 				7C0EA04626F5E65A001457C4 /* SearchMode.swift in Sources */,
+				7C33611926F8709B00688EC1 /* MediaMO+CoreDataProperties.swift in Sources */,
+				7C33611526F8515800688EC1 /* CoreDataStack.swift in Sources */,
 				7CD7EDF626F7A0D10004DD70 /* AppRequiredInstances.swift in Sources */,
+				7CD7EE0D26F7C0BD0004DD70 /* tawk_git.xcdatamodeld in Sources */,
 				7C0EA04C26F5E706001457C4 /* UserService.swift in Sources */,
 				7CD7EE0A26F7BA510004DD70 /* ImageLoader.swift in Sources */,
 				7CD7EE0626F7B2410004DD70 /* CoreDataMediaRepository.swift in Sources */,
@@ -579,6 +623,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		7CD7EE0B26F7C0BD0004DD70 /* tawk_git.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				7CD7EE0C26F7C0BD0004DD70 /* tawk_git.xcdatamodel */,
+			);
+			currentVersion = 7CD7EE0C26F7C0BD0004DD70 /* tawk_git.xcdatamodel */;
+			path = tawk_git.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 7CEA73BB26F4B75000FE3DBA /* Project object */;
 }

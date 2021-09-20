@@ -15,6 +15,7 @@ class AppFactory {
     let fileManager: FileManager
     let httpClient: HTTPClient
     let downloadClient: DownloadClient
+    let coreDataStack: CoreDataStack
     let mediaRepository: MediaRepository
     let mediaManager: MediaManager
     let imageLoader: ImageLoader
@@ -42,7 +43,13 @@ class AppFactory {
             queue: networkingQueue
         )
 
-        mediaRepository = CoreDataMediaRepository()
+        coreDataStack = CoreDataStack(
+            modelName: AppConfig.CoreData.modelName
+        )
+
+        mediaRepository = CoreDataMediaRepository(
+            stack: coreDataStack
+        )
 
         mediaManager = MediaManager(
             downloadClient: downloadClient,
@@ -70,5 +77,4 @@ class AppFactory {
 
         return userListVC
     }
-
 }

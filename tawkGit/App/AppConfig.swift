@@ -11,4 +11,8 @@ struct AppConfig {
     struct GithubAPI {
         static let baseURL = URL(string: "https://api.github.com/")!
     }
+
+    struct CoreData {
+        static let modelName = "tawk_git"
+    }
 }

@@ -14,6 +14,12 @@ class MediaManager {
     private let fileManager: FileManager
     private let mediaRepository: MediaRepository
 
+    var mediaDir: URL {
+        return fileManager
+            .documentDirectory
+            .appendingPathComponent("media")
+    }
+
     init(
         downloadClient: DownloadClient,
         fileManager: FileManager,
@@ -41,34 +47,20 @@ class MediaManager {
                 switch result {
                     case .success(let tempLocalURL):
                         do {
-                            // copy media to document directory
-                            guard let documentDir = self.fileManager.urls(
-                                for: .documentDirectory,
-                                in: .userDomainMask
-                            ).first else {
-                                completion(nil)
-                                return
-                            }
-
-                            let mediaDir = documentDir
-                                .appendingPathComponent("media")
-
-                            if !self.fileManager.fileExists(atPath: mediaDir.path) {
+                            if !self.fileManager.fileExists(atPath: self.mediaDir.path) {
                                 try self.fileManager.createDirectory(
-                                    at: mediaDir,
+                                    at: self.mediaDir,
                                     withIntermediateDirectories: true,
                                     attributes: nil
                                 )
                             }
 
-                            let fileName = UUID().uuidString
-                            let fileURL = mediaDir
-                                .appendingPathComponent(fileName)
-
-                            try self.fileManager.moveItem(at: tempLocalURL, to: fileURL)
-
                             // create new media
-                            let media = Media(remoteURL: remoteURL, localURL: fileURL)
+                            let fileName = UUID().uuidString
+                            let media = Media(remoteURL: remoteURL, localName: fileName)
+                            let localURL = self.localFileURL(for: media)
+
+                            try self.fileManager.moveItem(at: tempLocalURL, to: localURL)
 
                             // store media as cache
                             self.mediaRepository.saveMedia(media) {
@@ -90,5 +82,10 @@ class MediaManager {
                 }
             }
         }
+    }
+
+    func localFileURL(for media: Media) -> URL {
+        return mediaDir
+            .appendingPathComponent(media.localName)
     }
 }

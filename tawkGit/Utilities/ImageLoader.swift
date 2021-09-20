@@ -30,8 +30,15 @@ class ImageLoader {
             [weak self] media in
 
             guard let self = self,
-                  let media = media,
-                  let data = try? Data(contentsOf: media.localURL),
+                  let media = media
+            else {
+                completion(nil)
+                return
+            }
+
+            let localURL = self.mediaManager.localFileURL(for: media)
+
+            guard let data = try? Data(contentsOf: localURL),
                   let image = UIImage(data: data)
             else {
                 completion(nil)
