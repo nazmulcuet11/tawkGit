@@ -9,6 +9,6 @@ import UIKit
 
 extension UIImage {
     static var personPlaceholder: UIImage? {
-        UIImage(systemName: "person.crop.circle")
+        UIImage(named: "person")
     }
 }

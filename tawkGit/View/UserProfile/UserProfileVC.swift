@@ -193,10 +193,10 @@ extension UserProfileVC: UserProfileView {
         if let avatarURL = profile.avatarURL {
             avatarImageView.setImage(
                 with: avatarURL,
-                placeholder: UIImage(systemName: "person.circle.fill")
+                placeholder: .personPlaceholder
             )
         } else {
-            avatarImageView.image = UIImage(systemName: "person.circle.fill")
+            avatarImageView.image = .personPlaceholder
         }
 
         followersLabel.text = "Followers: \(profile.followers)"

@@ -12,8 +12,8 @@ class UserCell: UITableViewCell {
     lazy var avatarImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.image = UIImage(systemName: "person.crop.circle")
-        imageView.tintColor = .systemGray
+        imageView.image = .personPlaceholder
+        imageView.tintColor = .label
         NSLayoutConstraint.activate([
             imageView.heightAnchor.constraint(equalToConstant: 50),
             imageView.widthAnchor.constraint(equalToConstant: 50),
@@ -85,7 +85,7 @@ class UserCell: UITableViewCell {
         view.translatesAutoresizingMaskIntoConstraints = false
 
         view.backgroundColor = .systemGray6
-        view.layer.cornerRadius = 4.0
+        view.layer.cornerRadius = 6.0
         view.clipsToBounds = true
 
         view.addSubview(containerStack)
@@ -166,8 +166,8 @@ class UserCell: UITableViewCell {
         contentView.addSubview(containerView)
 
         NSLayoutConstraint.activate([
-            containerView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8),
-            containerView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8),
+            containerView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 12),
+            containerView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -12),
             containerView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
             containerView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
         ])

@@ -11,7 +11,7 @@ class NoteUserCell: UserCell {
     lazy var noteImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.image = UIImage(systemName: "book")
+        imageView.image = UIImage(named: "note")
         imageView.tintColor = .label
         NSLayoutConstraint.activate([
             imageView.heightAnchor.constraint(equalToConstant: 20),
