@@ -22,6 +22,7 @@ class UserListPresenter {
 
     private var service: UserService
     private var repository: UserRepository
+    private var reachability: Reachability?
 
     private(set) var users = [User]()
     private(set) var filteredUsers = [User]()
@@ -32,10 +33,14 @@ class UserListPresenter {
 
     init(
         service: UserService,
-        repository: UserRepository
+        repository: UserRepository,
+        reachability: Reachability?
     ) {
         self.service = service
         self.repository = repository
+        self.reachability = reachability
+
+        setupReachability()
     }
 
     deinit {
@@ -123,6 +128,22 @@ class UserListPresenter {
     }
 
     // MARK: - Helpers
+
+    private func setupReachability() {
+        do {
+            reachability?.whenReachable = {
+                [weak self] reachability in
+                guard let self = self else { return }
+                if self.users.isEmpty {
+                    self.loadUsers()
+                }
+            }
+
+            try reachability?.startNotifier()
+        } catch {
+            print("Unable to setup Reachability")
+        }
+    }
 
     private func processNetworkUsers(_ networkUsers: [UserNetworkModel]) {
 

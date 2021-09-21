@@ -73,7 +73,8 @@ class AppFactory {
     func getUserListVC() -> UserListVC {
         let presenter = UserListPresenter(
             service: userService,
-            repository: userRepository
+            repository: userRepository,
+            reachability: try? Reachability()
         )
         let userListVC = UserListVC(presenter: presenter)
         presenter.view = userListVC
