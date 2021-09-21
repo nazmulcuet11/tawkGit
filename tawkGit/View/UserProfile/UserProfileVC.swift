@@ -45,6 +45,8 @@ class UserProfileVC: BaseViewController, StoryboardBased {
 
         saveButton.clipsToBounds = true
         saveButton.layer.cornerRadius = 4
+        saveButton.backgroundColor = .systemGray
+        saveButton.isEnabled = false
 
         addObservers()
 
@@ -57,6 +59,8 @@ class UserProfileVC: BaseViewController, StoryboardBased {
 
     @IBAction func didTapSaveButton(_ sender: UIButton) {
         presenter.saveNote(note: notesTextView.text)
+        saveButton.backgroundColor = .systemGray
+        saveButton.isEnabled = false
     }
 
     private func resizeTextView() {
@@ -135,6 +139,8 @@ class UserProfileVC: BaseViewController, StoryboardBased {
 extension UserProfileVC: UITextViewDelegate {
     func textViewDidChange(_ textView: UITextView) {
         resizeTextView()
+        saveButton.backgroundColor = .label
+        saveButton.isEnabled = true
     }
 }
 

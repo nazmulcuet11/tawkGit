@@ -121,7 +121,7 @@
                                                                 <subviews>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TUe-vt-FS1">
                                                                         <rect key="frame" x="83" y="10" width="200" height="44"/>
-                                                                        <color key="backgroundColor" systemColor="systemGrayColor"/>
+                                                                        <color key="backgroundColor" systemColor="labelColor"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" constant="200" id="1kb-sO-Ibb"/>
                                                                             <constraint firstAttribute="height" constant="44" id="w8c-dF-APi"/>
