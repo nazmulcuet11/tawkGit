@@ -7,7 +7,7 @@
 
 import UIKit
 
-class UserProfileVC: UIViewController, StoryboardBased {
+class UserProfileVC: BaseViewController, StoryboardBased {
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var noDataView: UIView!
     @IBOutlet weak var noDataLabel: UILabel!

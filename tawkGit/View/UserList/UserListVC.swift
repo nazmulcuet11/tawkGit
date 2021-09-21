@@ -12,7 +12,7 @@ protocol TableViewItem {
     func cell(for tableView: UITableView, at indexPath: IndexPath) -> UITableViewCell
 }
 
-class UserListVC: UIViewController {
+class UserListVC: BaseViewController {
 
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)
