@@ -12,17 +12,22 @@ class ImageFilter {
 
     static func invertedImage(_ image: UIImage) -> UIImage {
         guard let filter = ImageFilter.invertFilter,
-              let cgImage = image.cgImage
+              let inputCGImage = image.cgImage
         else {
             return image
         }
 
-        let inputImage = CoreImage.CIImage(cgImage: cgImage)
-        filter.setValue(inputImage, forKey: kCIInputImageKey)
-        guard let outputImage = filter.outputImage else {
+        let inputCIImage = CIImage(cgImage: inputCGImage)
+        filter.setDefaults()
+        filter.setValue(inputCIImage, forKey: kCIInputImageKey)
+        guard let outputCIImage = filter.outputImage else {
             return image
         }
 
-        return UIImage(ciImage: outputImage)
+        let context = CIContext(options: nil)
+        guard let outputCGImage = context.createCGImage(outputCIImage, from: inputCIImage.extent) else {
+            return image
+        }
+        return UIImage(cgImage: outputCGImage)
     }
 }
