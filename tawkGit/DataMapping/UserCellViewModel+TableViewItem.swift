@@ -1,19 +1,19 @@
 //
-//  User+TableViewItem.swift
+//  UserCellViewModel+TableViewItem.swift
 //  tawkGit
 //
-//  Created by Nazmul Islam on 18/9/21.
+//  Created by Nazmul Islam on 21/9/21.
 //
 
 import UIKit
 
-extension User: TableViewItem {
+extension UserCellViewModel: TableViewItem {
     func slected(on vc: UIViewController, in tableView: UITableView, at indexPath: IndexPath) {
         guard let factory = UIApplication.appDelegate.factory else {
             return
         }
-        
-        let userProfileVC = factory.getUserProfileVC(user: self)
+
+        let userProfileVC = factory.getUserProfileVC(user: user)
         vc.navigationController?.pushViewController(userProfileVC, animated: true)
     }
 

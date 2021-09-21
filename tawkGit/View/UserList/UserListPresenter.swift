@@ -110,9 +110,9 @@ class UserListPresenter {
         let item: TableViewItem
         switch mode {
             case .normal:
-                item = users[index]
+                item = UserCellViewModel(with: users[index], index: index)
             case .search:
-                item = filteredUsers[index]
+                item = UserCellViewModel(with: filteredUsers[index], index: index)
         }
         return item
     }
@@ -172,7 +172,11 @@ class UserListPresenter {
 
             self.view?.reloadItems(at: indicesToReload)
             self.users.append(contentsOf: newUsers)
-            self.view?.appendItems(newItems: newUsers)
+
+            let viewModels = newUsers
+                .enumerated()
+                .map( { UserCellViewModel(with: $1, index: $0) })
+            self.view?.appendItems(newItems: viewModels)
         }
     }
 

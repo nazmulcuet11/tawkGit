@@ -11,19 +11,31 @@ class ImageLoader {
     typealias Completion<T> = (T) -> Void
 
     private let mediaManager: MediaManager
-    private var cache: [URL: UIImage]
+    private var cachedImages: [URL: UIImage]
+    private var invertedImages: [URL: UIImage]
+    
 
     init(
         mediaManager: MediaManager
     ) {
         self.mediaManager = mediaManager
-        self.cache = .init()
+        self.cachedImages = .init()
+        self.invertedImages = .init()
     }
 
-    func getImage(url: URL, completion: @escaping Completion<UIImage?>) {
-        if let image = cache[url] {
-            completion(image)
-            return
+    func getImage(url: URL, inverted: Bool, completion: @escaping Completion<UIImage?>) {
+
+        // lookup in the cache first
+        if inverted {
+            if let image = invertedImages[url] {
+                completion(image)
+                return
+            }
+        } else {
+            if let image = cachedImages[url] {
+                completion(image)
+                return
+            }
         }
 
         mediaManager.getMedia(remoteURL: url) {
@@ -51,13 +63,20 @@ class ImageLoader {
                     return
                 }
                 
-                self.cache[url] = image
-                completion(image)
+                self.cachedImages[url] = image
+                if inverted {
+                    let invertedImage = ImageFilter.invertedImage(image)
+                    self.invertedImages[url] = invertedImage
+                    completion(invertedImage)
+                } else {
+                    completion(image)
+                }
             }
         }
     }
 
     func clearCache() {
-        cache = .init()
+        cachedImages = .init()
+        invertedImages = .init()
     }
 }

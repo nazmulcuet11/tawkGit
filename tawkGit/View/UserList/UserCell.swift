@@ -100,6 +100,8 @@ class UserCell: UITableViewCell {
         return view
     }()
 
+//    private var placeHolder
+
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupUI()
@@ -154,16 +156,18 @@ class UserCell: UITableViewCell {
         containerStack.addArrangedSubview(labelContainerView)
     }
 
-    func configure(with user: User) {
-        nameLabel.text = user.username
-        detailsLabel.text = "\(user.id)"
-        if let avatarURL = user.avatarURL {
+    func configure(with vm: UserCellViewModel) {
+        nameLabel.text = vm.name
+        detailsLabel.text = vm.details
+        
+        if let avatarURL = vm.avatarURL {
             avatarImageView.setImage(
                 with: avatarURL,
-                placeholder: UIImage(systemName: "person.crop.circle")
+                placeholder: .personPlaceholder,
+                inverted: vm.invertAvatarColor
             )
         } else {
-            avatarImageView.image = UIImage(systemName: "person.crop.circle")
+            avatarImageView.image = .personPlaceholder
         }
     }
 }

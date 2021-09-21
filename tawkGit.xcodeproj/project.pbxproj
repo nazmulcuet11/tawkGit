@@ -19,6 +19,10 @@
 		7C040E5A26F9EB8400B99084 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C040E5926F9EB8400B99084 /* Reachability.swift */; };
 		7C040E5C26F9ED1F00B99084 /* PromtView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C040E5B26F9ED1F00B99084 /* PromtView.swift */; };
 		7C040E5F26FA10AC00B99084 /* TableViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C040E5E26FA10AC00B99084 /* TableViewItem.swift */; };
+		7C040E6126FA1C1300B99084 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C040E6026FA1C1300B99084 /* UIImage+Extension.swift */; };
+		7C040E6326FA353C00B99084 /* UserCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C040E6226FA353C00B99084 /* UserCellViewModel.swift */; };
+		7C040E6526FA357A00B99084 /* UserCellViewModel+TableViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C040E6426FA357A00B99084 /* UserCellViewModel+TableViewItem.swift */; };
+		7C040E6726FA491500B99084 /* ImageFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C040E6626FA491500B99084 /* ImageFilter.swift */; };
 		7C0EA03026F5998B001457C4 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0EA02F26F5998B001457C4 /* UserCell.swift */; };
 		7C0EA03226F5A105001457C4 /* ReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0EA03126F5A105001457C4 /* ReusableView.swift */; };
 		7C0EA03426F5A110001457C4 /* UITableView+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0EA03326F5A110001457C4 /* UITableView+Convenience.swift */; };
@@ -31,7 +35,6 @@
 		7C0EA04626F5E65A001457C4 /* SearchMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0EA04526F5E65A001457C4 /* SearchMode.swift */; };
 		7C0EA04A26F5E6F1001457C4 /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0EA04926F5E6F1001457C4 /* UserRepository.swift */; };
 		7C0EA04C26F5E706001457C4 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0EA04B26F5E706001457C4 /* UserService.swift */; };
-		7C0EA05126F61CE7001457C4 /* User+TableViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0EA05026F61CE7001457C4 /* User+TableViewItem.swift */; };
 		7C0EA05326F62060001457C4 /* CoreDataUserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0EA05226F62060001457C4 /* CoreDataUserRepository.swift */; };
 		7C0EA05526F623B8001457C4 /* BackendUserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0EA05426F623B8001457C4 /* BackendUserService.swift */; };
 		7C33611526F8515800688EC1 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C33611426F8515800688EC1 /* CoreDataStack.swift */; };
@@ -78,6 +81,10 @@
 		7C040E5926F9EB8400B99084 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		7C040E5B26F9ED1F00B99084 /* PromtView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromtView.swift; sourceTree = "<group>"; };
 		7C040E5E26FA10AC00B99084 /* TableViewItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewItem.swift; sourceTree = "<group>"; };
+		7C040E6026FA1C1300B99084 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
+		7C040E6226FA353C00B99084 /* UserCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCellViewModel.swift; sourceTree = "<group>"; };
+		7C040E6426FA357A00B99084 /* UserCellViewModel+TableViewItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserCellViewModel+TableViewItem.swift"; sourceTree = "<group>"; };
+		7C040E6626FA491500B99084 /* ImageFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFilter.swift; sourceTree = "<group>"; };
 		7C0EA02F26F5998B001457C4 /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		7C0EA03126F5A105001457C4 /* ReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReusableView.swift; sourceTree = "<group>"; };
 		7C0EA03326F5A110001457C4 /* UITableView+Convenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+Convenience.swift"; sourceTree = "<group>"; };
@@ -90,7 +97,6 @@
 		7C0EA04526F5E65A001457C4 /* SearchMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMode.swift; sourceTree = "<group>"; };
 		7C0EA04926F5E6F1001457C4 /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
 		7C0EA04B26F5E706001457C4 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
-		7C0EA05026F61CE7001457C4 /* User+TableViewItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+TableViewItem.swift"; sourceTree = "<group>"; };
 		7C0EA05226F62060001457C4 /* CoreDataUserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataUserRepository.swift; sourceTree = "<group>"; };
 		7C0EA05426F623B8001457C4 /* BackendUserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackendUserService.swift; sourceTree = "<group>"; };
 		7C33611426F8515800688EC1 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
@@ -152,6 +158,7 @@
 			isa = PBXGroup;
 			children = (
 				7C0EA02F26F5998B001457C4 /* UserCell.swift */,
+				7C040E6226FA353C00B99084 /* UserCellViewModel.swift */,
 				7C0EA03626F5A541001457C4 /* NoteUserCell.swift */,
 				7CEA73CA26F4B75000FE3DBA /* UserListVC.swift */,
 				7C0EA03C26F5DA7C001457C4 /* UserListPresenter.swift */,
@@ -166,11 +173,13 @@
 				7C0EA03126F5A105001457C4 /* ReusableView.swift */,
 				7C040E5926F9EB8400B99084 /* Reachability.swift */,
 				7CD7EDFB26F7A53F0004DD70 /* MediaManager.swift */,
+				7C040E6626FA491500B99084 /* ImageFilter.swift */,
 				7CD7EE0926F7BA510004DD70 /* ImageLoader.swift */,
 				7C0EA03326F5A110001457C4 /* UITableView+Convenience.swift */,
 				7CD7EE0726F7B3DD0004DD70 /* UIImageView+Extension.swift */,
 				7C33612726F8CC9700688EC1 /* StoryboardBased.swift */,
 				7C33611A26F8747400688EC1 /* FileManager+Extension.swift */,
+				7C040E6026FA1C1300B99084 /* UIImage+Extension.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -209,9 +218,9 @@
 		7C0EA04D26F5EDE5001457C4 /* DataMapping */ = {
 			isa = PBXGroup;
 			children = (
-				7C0EA05026F61CE7001457C4 /* User+TableViewItem.swift */,
 				7C040E5426F9AC3400B99084 /* User+UserNetworkModel.swift */,
 				7C040E5326F9AC3400B99084 /* UserProfile+UserProfileNetworkModel.swift */,
+				7C040E6426FA357A00B99084 /* UserCellViewModel+TableViewItem.swift */,
 			);
 			path = DataMapping;
 			sourceTree = "<group>";
@@ -450,7 +459,6 @@
 				7CD7EDFE26F7A5600004DD70 /* DownloadCleint.swift in Sources */,
 				7CD7EDF426F758600004DD70 /* AppConfig.swift in Sources */,
 				7CEA73CB26F4B75000FE3DBA /* UserListVC.swift in Sources */,
-				7C0EA05126F61CE7001457C4 /* User+TableViewItem.swift in Sources */,
 				7C040E4D26F9A4E300B99084 /* UserProfileMO+CoreDataClass.swift in Sources */,
 				7C040E5526F9AC3400B99084 /* UserProfile+UserProfileNetworkModel.swift in Sources */,
 				7CD7EE0026F7AAD80004DD70 /* HTTPURLResponse+Extensions.swift in Sources */,
@@ -465,11 +473,13 @@
 				7C040E4F26F9A4E300B99084 /* MediaMO+CoreDataProperties.swift in Sources */,
 				7CD7EE0826F7B3DD0004DD70 /* UIImageView+Extension.swift in Sources */,
 				7CD7EDF026F73EB10004DD70 /* AsyncOperation.swift in Sources */,
+				7C040E6526FA357A00B99084 /* UserCellViewModel+TableViewItem.swift in Sources */,
 				7C040E5626F9AC3400B99084 /* User+UserNetworkModel.swift in Sources */,
 				7C040E4E26F9A4E300B99084 /* MediaMO+CoreDataClass.swift in Sources */,
 				7CD7EDF226F742CA0004DD70 /* DataTaskOperation.swift in Sources */,
 				7C33612426F8C2B300688EC1 /* UserProfileVC.swift in Sources */,
 				7CD7EE0426F7ADDF0004DD70 /* MediaRepository.swift in Sources */,
+				7C040E6326FA353C00B99084 /* UserCellViewModel.swift in Sources */,
 				7C33611B26F8747400688EC1 /* FileManager+Extension.swift in Sources */,
 				7C040E5A26F9EB8400B99084 /* Reachability.swift in Sources */,
 				7C040E5226F9A4E300B99084 /* UserMO+CoreDataProperties.swift in Sources */,
@@ -480,10 +490,12 @@
 				7C0EA04226F5E60B001457C4 /* User.swift in Sources */,
 				7C0EA03026F5998B001457C4 /* UserCell.swift in Sources */,
 				7C0EA04626F5E65A001457C4 /* SearchMode.swift in Sources */,
+				7C040E6126FA1C1300B99084 /* UIImage+Extension.swift in Sources */,
 				7C33611526F8515800688EC1 /* CoreDataStack.swift in Sources */,
 				7CD7EDF626F7A0D10004DD70 /* AppFactory.swift in Sources */,
 				7CD7EE0D26F7C0BD0004DD70 /* tawk_git.xcdatamodeld in Sources */,
 				7C0EA04C26F5E706001457C4 /* UserService.swift in Sources */,
+				7C040E6726FA491500B99084 /* ImageFilter.swift in Sources */,
 				7C040E5026F9A4E300B99084 /* UserMO+CoreDataClass.swift in Sources */,
 				7CD7EE0A26F7BA510004DD70 /* ImageLoader.swift in Sources */,
 				7C040E5126F9A4E300B99084 /* UserProfileMO+CoreDataProperties.swift in Sources */,
