@@ -21,10 +21,10 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h5q-gc-ATT">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="605.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="525.5"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="ztt-78-Dh7">
-                                                <rect key="frame" x="24" y="0.0" width="366" height="605.5"/>
+                                                <rect key="frame" x="24" y="0.0" width="366" height="525.5"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DiQ-oq-1C7">
                                                         <rect key="frame" x="0.0" y="0.0" width="366" height="166"/>
@@ -99,7 +99,7 @@
                                                         </subviews>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="Rdw-Td-4yp">
-                                                        <rect key="frame" x="0.0" y="306" width="366" height="282.5"/>
+                                                        <rect key="frame" x="0.0" y="306" width="366" height="202.5"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notes:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FKF-bb-bAL">
                                                                 <rect key="frame" x="0.0" y="0.0" width="366" height="20.5"/>
@@ -108,16 +108,16 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p5R-QI-1rf">
-                                                                <rect key="frame" x="0.0" y="24.5" width="366" height="200"/>
+                                                                <rect key="frame" x="0.0" y="24.5" width="366" height="120"/>
                                                                 <constraints>
-                                                                    <constraint firstAttribute="height" constant="200" id="h0s-oW-q0U"/>
+                                                                    <constraint firstAttribute="height" constant="120" id="h0s-oW-q0U"/>
                                                                 </constraints>
                                                                 <color key="textColor" systemColor="labelColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                             </textView>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G30-ut-fOk">
-                                                                <rect key="frame" x="0.0" y="228.5" width="366" height="54"/>
+                                                                <rect key="frame" x="0.0" y="148.5" width="366" height="54"/>
                                                                 <subviews>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TUe-vt-FS1">
                                                                         <rect key="frame" x="83" y="10" width="200" height="44"/>
@@ -144,7 +144,7 @@
                                                         </subviews>
                                                     </stackView>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="auh-27-Jyn">
-                                                        <rect key="frame" x="0.0" y="604.5" width="366" height="1"/>
+                                                        <rect key="frame" x="0.0" y="524.5" width="366" height="1"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="1" id="Gah-cq-6UO"/>
@@ -265,6 +265,7 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="mqA-QF-hb4"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="mqA-QF-hb4" firstAttribute="bottom" secondItem="nXx-aw-huX" secondAttribute="bottom" id="3CK-lm-PpB"/>
                             <constraint firstItem="mqA-QF-hb4" firstAttribute="trailing" secondItem="nXx-aw-huX" secondAttribute="trailing" id="EW8-xz-au9"/>
@@ -275,6 +276,9 @@
                             <constraint firstItem="PMi-wR-OzN" firstAttribute="leading" secondItem="mqA-QF-hb4" secondAttribute="leading" id="a0Q-pp-yFA"/>
                             <constraint firstItem="mqA-QF-hb4" firstAttribute="trailing" secondItem="PMi-wR-OzN" secondAttribute="trailing" id="mgC-rD-5Gd"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="kdv-Ip-F9C" appends="YES" id="6vW-g7-UyP"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="activityIndicator" destination="fwD-vI-zd5" id="5rk-gD-aaB"/>
@@ -292,9 +296,15 @@
                         <outlet property="notesTextView" destination="p5R-QI-1rf" id="pdz-EJ-CfE"/>
                         <outlet property="notesTextViewHeightLC" destination="h0s-oW-q0U" id="ajQ-Bo-9Yf"/>
                         <outlet property="saveButton" destination="TUe-vt-FS1" id="7gM-1S-tJu"/>
+                        <outlet property="scrollView" destination="nXx-aw-huX" id="nql-tj-q46"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mkv-Kg-gfz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="kdv-Ip-F9C">
+                    <connections>
+                        <action selector="didTapOnView:" destination="cI1-lh-jlZ" id="S25-Xo-EPt"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="80" y="-632"/>
         </scene>

@@ -14,6 +14,7 @@ class UserProfileVC: BaseViewController, StoryboardBased {
 
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
 
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var followersLabel: UILabel!
     @IBOutlet weak var followingLabel: UILabel!
@@ -28,6 +29,8 @@ class UserProfileVC: BaseViewController, StoryboardBased {
     @IBOutlet weak var footerViewHeightLC: NSLayoutConstraint!
 
     var presenter: UserProfilePresenter!
+
+    private var keyboardHeight: CGFloat = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,16 +64,30 @@ class UserProfileVC: BaseViewController, StoryboardBased {
         presenter.saveNote(note: notesTextView.text)
         saveButton.backgroundColor = .systemGray
         saveButton.isEnabled = false
+        notesTextView.resignFirstResponder()
+    }
+
+    @IBAction func didTapOnView(_ sender: Any) {
+        notesTextView.resignFirstResponder()
     }
 
     private func resizeTextView() {
         let size = CGSize(width: notesTextView.bounds.width, height: .infinity)
         let estimatedSize = notesTextView.sizeThatFits(size)
-        if estimatedSize.height > 200 {
-            notesTextViewHeightLC.constant = estimatedSize.height
+        let heightToSet: CGFloat
+        if estimatedSize.height > 120 {
+            heightToSet = estimatedSize.height
         } else {
-            notesTextViewHeightLC.constant = 200
+            heightToSet = 120
         }
+
+        let currentHeight = notesTextViewHeightLC.constant
+        let diff = heightToSet - currentHeight
+        notesTextViewHeightLC.constant = heightToSet
+
+        var newOffset = scrollView.contentOffset
+        newOffset.y += diff
+        scrollView.setContentOffset(newOffset, animated: false)
     }
 
     private func addObservers() {
@@ -102,6 +119,7 @@ class UserProfileVC: BaseViewController, StoryboardBased {
             return
         }
 
+        keyboardHeight = frame.height
         UIView.animate(withDuration: duration) {
             self.footerViewHeightLC.constant = frame.height + 1
         }
@@ -141,6 +159,13 @@ extension UserProfileVC: UITextViewDelegate {
         resizeTextView()
         saveButton.backgroundColor = .label
         saveButton.isEnabled = true
+    }
+
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        var point = view.frame.origin
+        let textViewFrame = view.convert(notesTextView.frame, from: notesTextView)
+        point.y = textViewFrame.maxY - (UIScreen.main.bounds.height - keyboardHeight)
+        scrollView.setContentOffset(point, animated: true)
     }
 }
 
@@ -206,5 +231,7 @@ extension UserProfileVC: UserProfileView {
         } else {
             notesTextView.text = nil
         }
+
+        resizeTextView()
     }
 }
