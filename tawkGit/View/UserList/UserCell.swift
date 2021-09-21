@@ -13,7 +13,7 @@ class UserCell: UITableViewCell {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.image = UIImage(systemName: "person.crop.circle")
-        imageView.tintColor = .black
+        imageView.tintColor = .systemGray
         NSLayoutConstraint.activate([
             imageView.heightAnchor.constraint(equalToConstant: 50),
             imageView.widthAnchor.constraint(equalToConstant: 50),
@@ -21,7 +21,7 @@ class UserCell: UITableViewCell {
         imageView.layer.cornerRadius = 25
         imageView.clipsToBounds = true
         imageView.layer.borderWidth = 1
-        imageView.layer.borderColor = UIColor.black.cgColor
+        imageView.layer.borderColor = UIColor.systemGray.cgColor
         return imageView
     }()
 

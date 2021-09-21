@@ -11,8 +11,7 @@ class UserProfileVC: BaseViewController, StoryboardBased {
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var noDataView: UIView!
     @IBOutlet weak var noDataLabel: UILabel!
-    
-    @IBOutlet weak var loadingView: UIView!
+
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
 
     @IBOutlet weak var avatarImageView: UIImageView!
@@ -36,13 +35,13 @@ class UserProfileVC: BaseViewController, StoryboardBased {
         avatarImageView.clipsToBounds = true
         avatarImageView.layer.cornerRadius = 75
         avatarImageView.layer.borderWidth = 1
-        avatarImageView.layer.borderColor = UIColor.black.cgColor
+        avatarImageView.layer.borderColor = UIColor.systemGray.cgColor
 
         notesTextView.delegate = self
         notesTextView.clipsToBounds = true
         notesTextView.layer.cornerRadius = 4
         notesTextView.layer.borderWidth = 1
-        notesTextView.layer.borderColor = UIColor.black.cgColor
+        notesTextView.layer.borderColor = UIColor.systemGray.cgColor
 
         saveButton.clipsToBounds = true
         saveButton.layer.cornerRadius = 4
@@ -147,13 +146,11 @@ extension UserProfileVC: UserProfileView {
 
     func showLoader() {
         noDataLabel.isHidden = true
-        loadingView.isHidden = false
         activityIndicator.isHidden = false
     }
 
     func hideLoader() {
         noDataLabel.isHidden = false
-        loadingView.isHidden = true
         activityIndicator.isHidden = true
     }
 

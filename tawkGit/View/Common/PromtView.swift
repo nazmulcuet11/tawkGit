@@ -12,7 +12,7 @@ class PromtView: UIView {
         let label =  UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = ""
-        label.textColor = .white
+        label.textColor = .label
         label.textAlignment = .center
         label.font = UIFont.preferredFont(forTextStyle: .body)
         return label
