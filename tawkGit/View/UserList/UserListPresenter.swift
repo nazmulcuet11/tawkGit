@@ -20,9 +20,9 @@ class UserListPresenter {
 
     weak var view: UserListView?
 
-    private var service: UserService
-    private var repository: UserRepository
-    private var reachability: Reachability?
+    private let service: UserService
+    private let repository: UserRepository
+    private let reachability: Reachability?
 
     private(set) var users = [User]()
     private(set) var filteredUsers = [User]()

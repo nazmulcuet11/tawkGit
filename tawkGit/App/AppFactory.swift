@@ -71,10 +71,17 @@ class AppFactory {
     }
 
     func getUserListVC() -> UserListVC {
+        var reachability: Reachability?
+        do {
+            reachability = try Reachability()
+        } catch {
+            print("Can not create reachability: \(error.localizedDescription)")
+        }
+
         let presenter = UserListPresenter(
             service: userService,
             repository: userRepository,
-            reachability: try? Reachability()
+            reachability: reachability
         )
         let userListVC = UserListVC(presenter: presenter)
         presenter.view = userListVC
@@ -83,10 +90,18 @@ class AppFactory {
     }
 
     func getUserProfileVC(user: User) -> UserProfileVC {
+        var reachability: Reachability?
+        do {
+            reachability = try Reachability()
+        } catch {
+            print("Can not create reachability: \(error.localizedDescription)")
+        }
+
         let presenter = UserProfilePresenter(
             service: userService,
             repository: userRepository,
-            user: user
+            user: user,
+            reachability: reachability
         )
         let vc = UserProfileVC.instantiate()
         vc.presenter = presenter

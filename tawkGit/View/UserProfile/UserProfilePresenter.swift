@@ -20,16 +20,22 @@ class UserProfilePresenter {
     private let service: UserService
     private let repository: UserRepository
     private let user: User
+    private let reachability: Reachability?
+
     private var userProfile: UserProfile?
     
     init(
         service: UserService,
         repository: UserRepository,
-        user: User
+        user: User,
+        reachability: Reachability?
     ) {
         self.service = service
         self.repository = repository
         self.user = user
+        self.reachability = reachability
+
+        setupReachability()
     }
 
     deinit {
@@ -95,7 +101,7 @@ class UserProfilePresenter {
 
     // MARK: - Helpers
 
-    func processNetworkProfile(_ networkModel: UserProfileNetworkModel) {
+    private func processNetworkProfile(_ networkModel: UserProfileNetworkModel) {
         DispatchQueue.main.async {
             let userProfile: UserProfile
             if let existingProfile = self.userProfile {
@@ -109,6 +115,22 @@ class UserProfilePresenter {
 
             self.userProfile = userProfile
             self.view?.update(user: self.user, profile: userProfile)
+        }
+    }
+
+    private func setupReachability() {
+        do {
+            reachability?.whenReachable = {
+                [weak self] reachability in
+                guard let self = self else { return }
+                if self.userProfile == nil {
+                    self.loadData()
+                }
+            }
+
+            try reachability?.startNotifier()
+        } catch {
+            print("Unable to setup Reachability")
         }
     }
 }
