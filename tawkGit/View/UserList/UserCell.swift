@@ -110,6 +110,34 @@ class UserCell: UITableViewCell {
         setupUI()
     }
 
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        setAsSelectedOrHighlighted(selected, animated: animated)
+        super.setSelected(selected, animated: animated)
+    }
+
+    override func setHighlighted(_ highlighted: Bool, animated: Bool) {
+        setAsSelectedOrHighlighted(highlighted, animated: animated)
+        super.setHighlighted(highlighted, animated: animated)
+    }
+
+    private func setAsSelectedOrHighlighted(_ selectedOrHighlighted: Bool, animated: Bool) {
+        let action: () -> Void = { [weak self] in
+            self?.containerView.backgroundColor = selectedOrHighlighted ? .systemGray5: .systemGray6
+        }
+
+        if animated {
+            UIView.animate(
+                withDuration: 0.5,
+                delay: 0,
+                options: .curveEaseInOut,
+                animations: action,
+                completion: nil
+            )
+        } else {
+            action()
+        }
+    }
+
     func setupUI() {
         selectionStyle = .none
 

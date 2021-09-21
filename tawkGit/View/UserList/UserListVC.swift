@@ -8,6 +8,7 @@
 import UIKit
 
 protocol TableViewItem {
+    func slected(on vc: UIViewController, in tableView: UITableView, at indexPath: IndexPath)
     func cell(for tableView: UITableView, at indexPath: IndexPath) -> UITableViewCell
 }
 
@@ -76,6 +77,11 @@ class UserListVC: UIViewController {
         presenter.loadUsers()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.reloadData()
+    }
+
     // MARK: - Helpers
 
     private func setupUI() {
@@ -111,7 +117,9 @@ extension UserListVC: UITableViewDataSource {
 
 extension UserListVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("selected row \(indexPath.row)")
+        let item = presenter.item(at: indexPath.row)
+        item.slected(on: self, in: tableView, at: indexPath)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
 

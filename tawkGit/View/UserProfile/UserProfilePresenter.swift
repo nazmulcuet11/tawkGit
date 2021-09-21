@@ -11,7 +11,7 @@ protocol UserProfileView: AnyObject {
     func showNoDataView()
     func showLoader()
     func hideLoader()
-    func update(profile: UserProfile)
+    func update(user: User, profile: UserProfile)
 }
 
 class UserProfilePresenter {
@@ -19,28 +19,33 @@ class UserProfilePresenter {
 
     private let service: UserService
     private let repository: UserRepository
-    private let username: String
+    private let user: User
     private var userProfile: UserProfile?
     
     init(
         service: UserService,
         repository: UserRepository,
-        username: String
+        user: User
     ) {
         self.service = service
         self.repository = repository
-        self.username = username
+        self.user = user
     }
 
-    func viewLoaded() {
+    func loadData() {
+
+        user.profileVisited = true
+        repository.saveUser(user)
+
         DispatchQueue.main.async {
             self.view?.showNoDataView()
             self.view?.showLoader()
         }
 
-        repository.getUserProfile(login: username) {
+        repository.getUserProfile(login: user.username) {
             [weak self] userProfile in
             guard let self = self,
+                  self.userProfile == nil,
                   let userProfile = userProfile
             else {
                 return
@@ -48,11 +53,12 @@ class UserProfilePresenter {
 
             self.userProfile = userProfile
             DispatchQueue.main.async {
-                self.view?.update(profile: userProfile)
+                self.view?.hideLoader()
+                self.view?.update(user: self.user, profile: userProfile)
             }
         }
 
-        service.getUserProfile(login: username) {
+        service.getUserProfile(login: user.username) {
             [weak self] result in
             guard let self = self else { return }
 
@@ -62,18 +68,43 @@ class UserProfilePresenter {
 
             switch result {
                 case .success(let networkProfile):
-                    let userProfile = networkProfile.toUserProfile()
-                    self.userProfile = userProfile
-                    self.repository.saveUserProfile(userProfile)
-                    DispatchQueue.main.async {
-                        self.view?.update(profile: userProfile)
-                    }
+                    self.processNetworkProfile(networkProfile)
                 case .failure(let error):
                     print("Error fetching data: \(error.localizedDescription)")
                     DispatchQueue.main.async {
-                        self.view?.showNoDataView()
+                        if self.userProfile == nil {
+                            self.view?.showNoDataView()
+                        }
                     }
             }
+        }
+    }
+
+    func saveNote(note: String?) {
+        if let note = note, !note.isEmpty {
+            user.note = note
+        } else {
+            user.note = nil
+        }
+        repository.saveUser(user)
+    }
+
+    // MARK: - Helpers
+
+    func processNetworkProfile(_ networkModel: UserProfileNetworkModel) {
+        DispatchQueue.main.async {
+            let userProfile: UserProfile
+            if let existingProfile = self.userProfile {
+                userProfile = existingProfile
+                userProfile.transferChanges(from: networkModel)
+            } else {
+                userProfile = UserProfile(from: networkModel)
+            }
+
+            self.repository.saveUserProfile(userProfile)
+
+            self.userProfile = userProfile
+            self.view?.update(user: self.user, profile: userProfile)
         }
     }
 }

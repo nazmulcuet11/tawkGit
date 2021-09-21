@@ -16,26 +16,6 @@ class CoreDataUserRepository: UserRepository {
         self.stack = stack
     }
 
-    func saveUser(_ user: User, completion: Completion<Bool>?) {
-        stack.perform(on: .background) { context in
-            
-            self.populateUser(user, in: context)
-            self.stack.saveContext()
-            completion?(true)
-        }
-    }
-
-    func saveUsers(_ users: [User], completion: Completion<Bool>?) {
-        stack.perform(on: .background) { context in
-
-            for user in users {
-                self.populateUser(user, in: context)
-            }
-            self.stack.saveContext()
-            completion?(true)
-        }
-    }
-
     func getAllUsers(completion: @escaping Completion<[User]>) {
         stack.perform(on: .main) { context in
 
@@ -80,31 +60,75 @@ class CoreDataUserRepository: UserRepository {
         }
     }
 
+    func getUser(id: Int, completion: @escaping Completion<User?>) {
+
+        stack.perform(on: .main) { context in
+            guard let userMo = self.getUserMO(id: id, context: context) else {
+                completion(nil)
+                return
+            }
+            completion(userMo.toUser())
+        }
+    }
+
+    func saveUser(_ user: User, completion: Completion<Bool>?) {
+        stack.perform(on: .background) { context in
+
+            self.populateUser(user, in: context)
+            self.stack.saveContext()
+            completion?(true)
+        }
+    }
+
+    func saveUsers(_ users: [User], completion: Completion<Bool>?) {
+        stack.perform(on: .background) { context in
+
+            for user in users {
+                self.populateUser(user, in: context)
+            }
+            self.stack.saveContext()
+            completion?(true)
+        }
+    }
+
+    func saveNetworkUser(_ networkModel: UserNetworkModel, completion: Completion<User?>?) {
+        stack.perform(on: .background) { context in
+            let userMO = self.populateUser(networkModel, in: context)
+            self.stack.saveContext()
+            completion?(userMO.toUser())
+        }
+    }
+
+    func saveNetworkUsers(_ networkModels: [UserNetworkModel], completion: Completion<[User]>?) {
+        stack.perform(on: .background) { context in
+            var users = [User]()
+            for model in networkModels {
+                let userMO = self.populateUser(model, in: context)
+                if let user = userMO.toUser() {
+                    users.append(user)
+                }
+            }
+            self.stack.saveContext()
+            completion?(users)
+        }
+    }
+
     func getUserProfile(login: String, completion: @escaping Completion<UserProfile?>) {
         stack.perform(on: .main) { context in
 
-            let request: NSFetchRequest<UserMO> = UserMO.fetchRequest()
-
-            let predicate = NSPredicate(format: "%K == %@", #keyPath(UserMO.username), login)
-            request.predicate = predicate
-            do {
-                guard let userMO = try context.fetch(request).first else {
-                    completion(nil)
-                    return
-                }
-                let user = userMO.toUserProfile()
-                completion(user)
-            } catch {
-                print(error.localizedDescription)
+            guard let userProfileMO = self.getUserProfileMO(login: login, context: context) else {
                 completion(nil)
+                return
             }
+
+            let user = userProfileMO.toUserProfile()
+            completion(user)
         }
     }
 
     func saveUserProfile(_ userProfile: UserProfile, completion: Completion<Bool>?) {
         stack.perform(on: .background) { context in
-
-            self.populateUser(userProfile, in: context)
+            self.populateUserProfile(userProfile, in: context)
             self.stack.saveContext()
             completion?(true)
         }
@@ -129,7 +153,21 @@ class CoreDataUserRepository: UserRepository {
         }
     }
 
-    private func populateUser(_ user: User, in context: NSManagedObjectContext) {
+    private func getUserProfileMO(login: String, context: NSManagedObjectContext) -> UserProfileMO? {
+        let request: NSFetchRequest<UserProfileMO> = UserProfileMO.fetchRequest()
+        let predicate = NSPredicate(format: "%K == %@", #keyPath(UserProfileMO.username), login)
+        request.predicate = predicate
+
+        do {
+            return try context.fetch(request).first
+        } catch {
+            print(error.localizedDescription)
+            return nil
+        }
+    }
+
+    @discardableResult
+    private func populateUser(_ user: User, in context: NSManagedObjectContext) -> UserMO {
         let userMO: UserMO
         if let existingUserMO = getUserMO(id: user.id, context: context) {
             userMO = existingUserMO
@@ -142,25 +180,44 @@ class CoreDataUserRepository: UserRepository {
         userMO.avatarURL = user.avatarURL
         userMO.note = user.note
         userMO.profileVisited = user.profileVisited
+
+        return userMO
     }
 
-    private func populateUser(_ userProfile: UserProfile, in context: NSManagedObjectContext) {
+    @discardableResult
+    private func populateUser(_ networkModel: UserNetworkModel, in context: NSManagedObjectContext) -> UserMO {
         let userMO: UserMO
-        if let existingUserMO = getUserMO(id: userProfile.id, context: context) {
+        if let existingUserMO = getUserMO(id: networkModel.id, context: context) {
             userMO = existingUserMO
         } else {
             userMO = UserMO(context: context)
         }
 
-        userMO.userId = Int64(userProfile.id)
-        userMO.username = userProfile.username
-        userMO.avatarURL = userProfile.avatarURL
-        userMO.note = userProfile.note
-        userMO.followers = Int64(userProfile.followers)
-        userMO.following = Int64(userProfile.following)
-        userMO.name = userProfile.name
-        userMO.company = userProfile.company
-        userMO.blog = userProfile.blog
-        userMO.location = userProfile.location
+        userMO.userId = Int64(networkModel.id)
+        userMO.username = networkModel.login
+        userMO.avatarURL = networkModel.avatarURL
+        return userMO
+    }
+
+    @discardableResult
+    private func populateUserProfile(_ userProfile: UserProfile, in context: NSManagedObjectContext) -> UserProfileMO {
+        let userProfileMO: UserProfileMO
+        if let existingUserProfileMO = getUserProfileMO(login: userProfile.username, context: context) {
+            userProfileMO = existingUserProfileMO
+        } else {
+            userProfileMO = UserProfileMO(context: context)
+        }
+
+        userProfileMO.userId = Int64(userProfile.id)
+        userProfileMO.username = userProfile.username
+        userProfileMO.avatarURL = userProfile.avatarURL
+        userProfileMO.followers = Int64(userProfile.followers)
+        userProfileMO.following = Int64(userProfile.following)
+        userProfileMO.name = userProfile.name
+        userProfileMO.company = userProfile.company
+        userProfileMO.blog = userProfile.blog
+        userProfileMO.location = userProfile.location
+
+        return userProfileMO
     }
 }

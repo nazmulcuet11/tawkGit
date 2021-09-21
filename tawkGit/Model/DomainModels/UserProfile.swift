@@ -17,7 +17,6 @@ class UserProfile {
     var company: String?
     var blog: String?
     var location: String?
-    var note: String?
 
     init(
         id: Int,
@@ -28,8 +27,7 @@ class UserProfile {
         name: String?,
         company: String?,
         blog: String?,
-        location: String?,
-        note: String?
+        location: String?
     ) {
         self.id = id
         self.username = username
@@ -40,7 +38,6 @@ class UserProfile {
         self.company = company
         self.blog = blog
         self.location = location
-        self.note = note
     }
 }
 

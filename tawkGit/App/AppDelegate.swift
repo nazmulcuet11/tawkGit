@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.factory = factory
 
         let window = UIWindow()
-        let userListVC = factory.getUserProfileVC()
+        let userListVC = factory.getUserListVC()
         window.rootViewController = NavigationController(rootViewController: userListVC)
         window.makeKeyAndVisible()
 
@@ -33,3 +33,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 }
 
+extension UIApplication {
+    static var appDelegate: AppDelegate {
+        guard let appDelegate = shared.delegate as? AppDelegate else {
+            fatalError("appDelegate not found")
+        }
+        return appDelegate
+    }
+}

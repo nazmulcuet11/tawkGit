@@ -67,7 +67,7 @@ class UserListPresenter {
                 self.view?.hideLoader()
             }
 
-            self.updateUserList(newUsers: users)
+            self.processUsersFromRepository(users)
         }
 
         service.getUsers(since: lastUserId) {
@@ -121,22 +121,32 @@ class UserListPresenter {
     // MARK: - Helpers
 
     private func processNetworkUsers(_ networkUsers: [UserNetworkModel]) {
-        let users = networkUsers
-            .map({ User(from: $0) })
-        repository.saveUsers(users)
-        updateUserList(newUsers: users)
+
+        repository.saveNetworkUsers(networkUsers) {
+            [weak self] users in
+            self?.processUsersFromRepository(users)
+        }
     }
 
-    private func updateUserList(newUsers: [User]) {
+    private func processUsersFromRepository(_ fetchedUsers: [User]) {
         DispatchQueue.main.async {
             [weak self] in
             guard let self = self else { return }
 
-            let newUsers = newUsers
-                .filter({ !self.users.contains($0) })
+            var indicesToReload = [Int]()
+            var newUsers = [User]()
 
+            for user in fetchedUsers {
+                if let index = self.users.firstIndex(of: user) {
+                    self.users[index] = user
+                    indicesToReload.append(index)
+                } else {
+                    newUsers.append(user)
+                }
+            }
+
+            self.view?.reloadItems(at: indicesToReload)
             self.users.append(contentsOf: newUsers)
-            self.users.sort(by: { $0.id < $1.id })
             self.view?.appendItems(newItems: newUsers)
         }
     }

@@ -11,8 +11,8 @@ extension UIImageView {
     func setImage(with url: URL, placeholder: UIImage?) {
         image = placeholder
 
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate,
-              let imageLoader = appDelegate.factory?.imageLoader
+        let appDelegate = UIApplication.appDelegate
+        guard let imageLoader = appDelegate.factory?.imageLoader
         else {
             return
         }

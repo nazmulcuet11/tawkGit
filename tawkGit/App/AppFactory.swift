@@ -86,7 +86,7 @@ class AppFactory {
         return userListVC
     }
 
-    func getUserProfileVC() -> UserProfileVC {
+    func getUserProfileVC(user: User) -> UserProfileVC {
         let service = BackEndUserService(
             baseURL: AppConfig.GithubAPI.baseURL,
             client: httpClient
@@ -94,7 +94,7 @@ class AppFactory {
         let presenter = UserProfilePresenter(
             service: service,
             repository: userRepository,
-            username: "mojombo"
+            user: user
         )
         let vc = UserProfileVC.instantiate()
         vc.presenter = presenter

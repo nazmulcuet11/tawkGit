@@ -23,7 +23,8 @@ class UserProfileVC: UIViewController, StoryboardBased {
     @IBOutlet weak var blogLabel: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var notesTextView: UITextView!
-
+    @IBOutlet weak var saveButton: UIButton!
+    
     @IBOutlet weak var notesTextViewHeightLC: NSLayoutConstraint!
     @IBOutlet weak var footerViewHeightLC: NSLayoutConstraint!
 
@@ -39,13 +40,16 @@ class UserProfileVC: UIViewController, StoryboardBased {
 
         notesTextView.delegate = self
         notesTextView.clipsToBounds = true
-        notesTextView.layer.cornerRadius = 8
+        notesTextView.layer.cornerRadius = 4
         notesTextView.layer.borderWidth = 1
         notesTextView.layer.borderColor = UIColor.black.cgColor
 
+        saveButton.clipsToBounds = true
+        saveButton.layer.cornerRadius = 4
+
         addObservers()
 
-        presenter.viewLoaded()
+        presenter.loadData()
     }
 
     deinit {
@@ -53,7 +57,7 @@ class UserProfileVC: UIViewController, StoryboardBased {
     }
 
     @IBAction func didTapSaveButton(_ sender: UIButton) {
-
+        presenter.saveNote(note: notesTextView.text)
     }
 
     private func resizeTextView() {
@@ -154,7 +158,7 @@ extension UserProfileVC: UserProfileView {
     }
 
 
-    func update(profile: UserProfile) {
+    func update(user: User, profile: UserProfile) {
         noDataView.isHidden = true
 
         title = profile.username
@@ -195,7 +199,7 @@ extension UserProfileVC: UserProfileView {
             locationLabel.isHidden = true
         }
 
-        if let note = profile.note {
+        if let note = user.note {
             notesTextView.text = note
         } else {
             notesTextView.text = nil

@@ -8,13 +8,15 @@
 import Foundation
 
 extension User {
-    convenience init(from networkModel: UserNetworkModel) {
-        self.init(
-            id: networkModel.id,
-            username: networkModel.login,
-            avatarURL: networkModel.avatarURL,
-            note: nil,
-            profileVisited: false
-        )
+    func hasDifference(with networkModel: UserNetworkModel) -> Bool {
+        return id != networkModel.id
+            || username != networkModel.login
+            || avatarURL != networkModel.avatarURL
+    }
+
+    func transferChanges(from networkModel: UserNetworkModel) {
+        id = networkModel.id
+        username = networkModel.login
+        avatarURL = networkModel.avatarURL
     }
 }
