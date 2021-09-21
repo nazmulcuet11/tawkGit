@@ -20,6 +20,10 @@ class BaseViewController: UIViewController {
 
     private var reachability: Reachability?
 
+    deinit {
+        print("deinit \(self.self)")
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupReachability()
@@ -27,6 +31,11 @@ class BaseViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+
+        if let connection = self.reachability?.connection,
+           connection == .unavailable {
+            showOfflineStatus()
+        }
     }
 
     private func setupReachability() {
@@ -34,17 +43,27 @@ class BaseViewController: UIViewController {
             let reachability = try Reachability()
             self.reachability = reachability
 
-            reachability.whenUnreachable = { _ in
-                self.showOfflineStatus()
+            reachability.whenUnreachable = {
+                [weak self] reachability in
+                self?.reachabilityStatusChanged(reachability: reachability)
             }
-
-            reachability.whenReachable = { _ in
-                self.hideOfflineStatus()
+            reachability.whenReachable = {
+                [weak self] reachability in
+                self?.reachabilityStatusChanged(reachability: reachability)
             }
 
             try reachability.startNotifier()
         } catch {
             print("Unable to setup Reachability")
+        }
+    }
+
+    func reachabilityStatusChanged(reachability: Reachability) {
+        switch reachability.connection {
+            case .unavailable, .none:
+                self.showOfflineStatus()
+            default:
+                self.hideOfflineStatus()
         }
     }
 

@@ -9,45 +9,39 @@ import Foundation
 
 class AppFactory {
 
-    let dataSession: URLSession
-    let dataDecoder: JSONDecoder
-    let networkingQueue: OperationQueue
     let fileManager: FileManager
-    let httpClient: HTTPClient
-    let downloadClient: DownloadClient
-    let coreDataWritingQueue: DispatchQueue
-    let coreDataStack: CoreDataStack
-    let mediaRepository: MediaRepository
-    let mediaManager: MediaManager
     let imageLoader: ImageLoader
+    let mediaManager: MediaManager
+    let mediaRepository: MediaRepository
+    let userService: UserService
     let userRepository: UserRepository
 
     init() {
-        dataSession = .shared
+        let dataSession: URLSession = .shared
 
-        dataDecoder = JSONDecoder()
+        let dataDecoder = JSONDecoder()
 
-        networkingQueue = OperationQueue()
+        let networkingQueue = OperationQueue()
         networkingQueue.name = "NETWORKING_QUEUE"
         networkingQueue.maxConcurrentOperationCount = 1
         networkingQueue.qualityOfService = .background
 
         fileManager = .default
 
-        httpClient = HTTPClient(
+        let httpClient = HTTPClient(
             session: dataSession,
             decoder: dataDecoder,
             queue: networkingQueue
         )
 
-        downloadClient = DownloadClient(
+        let downloadClient = DownloadClient(
             session: dataSession,
             queue: networkingQueue
         )
 
-        coreDataWritingQueue = DispatchQueue(label: "CORE_DATA_WRITING_QUEUE")
+        let coreDataWritingQueue = DispatchQueue(label: "CORE_DATA_WRITING_QUEUE")
 
-        coreDataStack = CoreDataStack(
+        let coreDataStack = CoreDataStack(
             modelName: AppConfig.CoreData.modelName,
             writingQueue: coreDataWritingQueue
         )
@@ -66,18 +60,19 @@ class AppFactory {
             mediaManager: mediaManager
         )
 
+        userService = BackEndUserService(
+            baseURL: AppConfig.GithubAPI.baseURL,
+            client: httpClient
+        )
+
         userRepository = CoreDataUserRepository(
             stack: coreDataStack
         )
     }
 
     func getUserListVC() -> UserListVC {
-        let service = BackEndUserService(
-            baseURL: AppConfig.GithubAPI.baseURL,
-            client: httpClient
-        )
         let presenter = UserListPresenter(
-            service: service,
+            service: userService,
             repository: userRepository
         )
         let userListVC = UserListVC(presenter: presenter)
@@ -87,12 +82,8 @@ class AppFactory {
     }
 
     func getUserProfileVC(user: User) -> UserProfileVC {
-        let service = BackEndUserService(
-            baseURL: AppConfig.GithubAPI.baseURL,
-            client: httpClient
-        )
         let presenter = UserProfilePresenter(
-            service: service,
+            service: userService,
             repository: userRepository,
             user: user
         )

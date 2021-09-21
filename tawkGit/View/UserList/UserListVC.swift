@@ -7,11 +7,6 @@
 
 import UIKit
 
-protocol TableViewItem {
-    func slected(on vc: UIViewController, in tableView: UITableView, at indexPath: IndexPath)
-    func cell(for tableView: UITableView, at indexPath: IndexPath) -> UITableViewCell
-}
-
 class UserListVC: BaseViewController {
 
     private lazy var tableView: UITableView = {

@@ -18,6 +18,7 @@
 		7C040E5826F9E52B00B99084 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C040E5726F9E52B00B99084 /* BaseViewController.swift */; };
 		7C040E5A26F9EB8400B99084 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C040E5926F9EB8400B99084 /* Reachability.swift */; };
 		7C040E5C26F9ED1F00B99084 /* PromtView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C040E5B26F9ED1F00B99084 /* PromtView.swift */; };
+		7C040E5F26FA10AC00B99084 /* TableViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C040E5E26FA10AC00B99084 /* TableViewItem.swift */; };
 		7C0EA03026F5998B001457C4 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0EA02F26F5998B001457C4 /* UserCell.swift */; };
 		7C0EA03226F5A105001457C4 /* ReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0EA03126F5A105001457C4 /* ReusableView.swift */; };
 		7C0EA03426F5A110001457C4 /* UITableView+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0EA03326F5A110001457C4 /* UITableView+Convenience.swift */; };
@@ -76,6 +77,7 @@
 		7C040E5726F9E52B00B99084 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		7C040E5926F9EB8400B99084 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		7C040E5B26F9ED1F00B99084 /* PromtView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromtView.swift; sourceTree = "<group>"; };
+		7C040E5E26FA10AC00B99084 /* TableViewItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewItem.swift; sourceTree = "<group>"; };
 		7C0EA02F26F5998B001457C4 /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		7C0EA03126F5A105001457C4 /* ReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReusableView.swift; sourceTree = "<group>"; };
 		7C0EA03326F5A110001457C4 /* UITableView+Convenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+Convenience.swift"; sourceTree = "<group>"; };
@@ -138,6 +140,7 @@
 		7C040E5D26F9ED3100B99084 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				7C040E5E26FA10AC00B99084 /* TableViewItem.swift */,
 				7C0EA03A26F5D8C6001457C4 /* NavigationController.swift */,
 				7C040E5726F9E52B00B99084 /* BaseViewController.swift */,
 				7C040E5B26F9ED1F00B99084 /* PromtView.swift */,
@@ -457,6 +460,7 @@
 				7CD7EDFC26F7A53F0004DD70 /* MediaManager.swift in Sources */,
 				7CD7EDFA26F7A3DD0004DD70 /* DownloadTaskOperation.swift in Sources */,
 				7C0EA03226F5A105001457C4 /* ReusableView.swift in Sources */,
+				7C040E5F26FA10AC00B99084 /* TableViewItem.swift in Sources */,
 				7C0EA05526F623B8001457C4 /* BackendUserService.swift in Sources */,
 				7C040E4F26F9A4E300B99084 /* MediaMO+CoreDataProperties.swift in Sources */,
 				7CD7EE0826F7B3DD0004DD70 /* UIImageView+Extension.swift in Sources */,

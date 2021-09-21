@@ -38,6 +38,10 @@ class UserListPresenter {
         self.repository = repository
     }
 
+    deinit {
+        print("deinit \(self.self)")
+    }
+
     func startSearching() {
         mode = .search
         view?.reloadItems()

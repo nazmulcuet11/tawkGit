@@ -32,6 +32,10 @@ class UserProfilePresenter {
         self.user = user
     }
 
+    deinit {
+        print("deinit \(self.self)")
+    }
+
     func loadData() {
 
         user.profileVisited = true
