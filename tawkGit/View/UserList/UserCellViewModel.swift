@@ -13,6 +13,7 @@ struct UserCellViewModel {
     var avatarURL: String? { user.avatarURL }
     var invertAvatarColor: Bool { (index + 1) % 4 == 0}
     var hasNote: Bool { user.note != nil }
+    var profileVisited: Bool { user.profileVisited }
 
     let user: User
     let index: Int

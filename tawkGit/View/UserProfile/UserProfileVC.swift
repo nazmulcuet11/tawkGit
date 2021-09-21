@@ -157,7 +157,6 @@ extension UserProfileVC: UserProfileView {
         activityIndicator.isHidden = true
     }
 
-
     func update(user: User, profile: UserProfile) {
         noDataView.isHidden = true
 

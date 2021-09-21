@@ -100,7 +100,21 @@ class UserCell: UITableViewCell {
         return view
     }()
 
-//    private var placeHolder
+    private var viewModel: UserCellViewModel?
+
+    private var containerBackgroundColor: UIColor {
+        if let vm = viewModel, vm.profileVisited {
+            return .systemGray5
+        }
+        return .systemGray6
+    }
+
+    private var containerHighlightColor: UIColor {
+        if let vm = viewModel, vm.profileVisited {
+            return .systemGray4
+        }
+        return .systemGray5
+    }
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -123,8 +137,14 @@ class UserCell: UITableViewCell {
     }
 
     private func setAsSelectedOrHighlighted(_ selectedOrHighlighted: Bool, animated: Bool) {
-        let action: () -> Void = { [weak self] in
-            self?.containerView.backgroundColor = selectedOrHighlighted ? .systemGray5: .systemGray6
+        let action: () -> Void = {
+            [weak self] in
+            guard let self = self else { return }
+            if selectedOrHighlighted {
+                self.containerView.backgroundColor = self.containerHighlightColor
+            } else {
+                self.containerView.backgroundColor = self.containerBackgroundColor
+            }
         }
 
         if animated {
@@ -157,6 +177,8 @@ class UserCell: UITableViewCell {
     }
 
     func configure(with vm: UserCellViewModel) {
+        self.viewModel = vm
+
         nameLabel.text = vm.name
         detailsLabel.text = vm.details
         
@@ -169,5 +191,7 @@ class UserCell: UITableViewCell {
         } else {
             avatarImageView.image = .personPlaceholder
         }
+        
+        containerView.backgroundColor = containerBackgroundColor
     }
 }
