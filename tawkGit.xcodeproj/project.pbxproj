@@ -43,6 +43,10 @@
 		7C33612426F8C2B300688EC1 /* UserProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C33612326F8C2B300688EC1 /* UserProfileVC.swift */; };
 		7C33612626F8C2E300688EC1 /* UserProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C33612526F8C2E300688EC1 /* UserProfilePresenter.swift */; };
 		7C33612826F8CC9700688EC1 /* StoryboardBased.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C33612726F8CC9700688EC1 /* StoryboardBased.swift */; };
+		7C50661F26FB01FB00A55861 /* tawkGitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C50661E26FB01FB00A55861 /* tawkGitTests.swift */; };
+		7C50662726FB02EB00A55861 /* MockUserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C50662626FB02EB00A55861 /* MockUserService.swift */; };
+		7C50662926FB034200A55861 /* MockUserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C50662826FB034200A55861 /* MockUserRepository.swift */; };
+		7C50662B26FB320400A55861 /* MockUserListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C50662A26FB320400A55861 /* MockUserListView.swift */; };
 		7CD7EDEE26F739C30004DD70 /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD7EDED26F739C30004DD70 /* HTTPClient.swift */; };
 		7CD7EDF026F73EB10004DD70 /* AsyncOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD7EDEF26F73EB10004DD70 /* AsyncOperation.swift */; };
 		7CD7EDF226F742CA0004DD70 /* DataTaskOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD7EDF126F742CA0004DD70 /* DataTaskOperation.swift */; };
@@ -67,6 +71,16 @@
 		7CEA73E626F4C06E00FE3DBA /* user_list.json in Resources */ = {isa = PBXBuildFile; fileRef = 7CEA73E526F4C06E00FE3DBA /* user_list.json */; };
 		7CEA73E826F4C08B00FE3DBA /* user_profile.json in Resources */ = {isa = PBXBuildFile; fileRef = 7CEA73E726F4C08B00FE3DBA /* user_profile.json */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		7C50662126FB01FB00A55861 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7CEA73BB26F4B75000FE3DBA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7CEA73C226F4B75000FE3DBA;
+			remoteInfo = tawkGit;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		7C040E4726F9A4E300B99084 /* UserProfileMO+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserProfileMO+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -105,6 +119,12 @@
 		7C33612326F8C2B300688EC1 /* UserProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileVC.swift; sourceTree = "<group>"; };
 		7C33612526F8C2E300688EC1 /* UserProfilePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfilePresenter.swift; sourceTree = "<group>"; };
 		7C33612726F8CC9700688EC1 /* StoryboardBased.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryboardBased.swift; sourceTree = "<group>"; };
+		7C50661C26FB01FB00A55861 /* tawkGitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = tawkGitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7C50661E26FB01FB00A55861 /* tawkGitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tawkGitTests.swift; sourceTree = "<group>"; };
+		7C50662026FB01FB00A55861 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7C50662626FB02EB00A55861 /* MockUserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockUserService.swift; sourceTree = "<group>"; };
+		7C50662826FB034200A55861 /* MockUserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockUserRepository.swift; sourceTree = "<group>"; };
+		7C50662A26FB320400A55861 /* MockUserListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockUserListView.swift; sourceTree = "<group>"; };
 		7CD7EDED26F739C30004DD70 /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
 		7CD7EDEF26F73EB10004DD70 /* AsyncOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncOperation.swift; sourceTree = "<group>"; };
 		7CD7EDF126F742CA0004DD70 /* DataTaskOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTaskOperation.swift; sourceTree = "<group>"; };
@@ -133,6 +153,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		7C50661926FB01FB00A55861 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		7CEA73C026F4B75000FE3DBA /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -256,6 +283,26 @@
 			path = UserProfile;
 			sourceTree = "<group>";
 		};
+		7C50661D26FB01FB00A55861 /* tawkGitTests */ = {
+			isa = PBXGroup;
+			children = (
+				7C50662C26FB320E00A55861 /* Mocks */,
+				7C50661E26FB01FB00A55861 /* tawkGitTests.swift */,
+				7C50662026FB01FB00A55861 /* Info.plist */,
+			);
+			path = tawkGitTests;
+			sourceTree = "<group>";
+		};
+		7C50662C26FB320E00A55861 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				7C50662626FB02EB00A55861 /* MockUserService.swift */,
+				7C50662826FB034200A55861 /* MockUserRepository.swift */,
+				7C50662A26FB320400A55861 /* MockUserListView.swift */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
 		7CD7EDEC26F739A80004DD70 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
@@ -282,6 +329,7 @@
 			isa = PBXGroup;
 			children = (
 				7CEA73C526F4B75000FE3DBA /* tawkGit */,
+				7C50661D26FB01FB00A55861 /* tawkGitTests */,
 				7CEA73C426F4B75000FE3DBA /* Products */,
 			);
 			sourceTree = "<group>";
@@ -290,6 +338,7 @@
 			isa = PBXGroup;
 			children = (
 				7CEA73C326F4B75000FE3DBA /* tawkGit.app */,
+				7C50661C26FB01FB00A55861 /* tawkGitTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -381,6 +430,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		7C50661B26FB01FB00A55861 /* tawkGitTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7C50662526FB01FB00A55861 /* Build configuration list for PBXNativeTarget "tawkGitTests" */;
+			buildPhases = (
+				7C50661826FB01FB00A55861 /* Sources */,
+				7C50661926FB01FB00A55861 /* Frameworks */,
+				7C50661A26FB01FB00A55861 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7C50662226FB01FB00A55861 /* PBXTargetDependency */,
+			);
+			name = tawkGitTests;
+			productName = tawkGitTests;
+			productReference = 7C50661C26FB01FB00A55861 /* tawkGitTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		7CEA73C226F4B75000FE3DBA /* tawkGit */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7CEA73D726F4B75200FE3DBA /* Build configuration list for PBXNativeTarget "tawkGit" */;
@@ -407,6 +474,10 @@
 				LastSwiftUpdateCheck = 1250;
 				LastUpgradeCheck = 1250;
 				TargetAttributes = {
+					7C50661B26FB01FB00A55861 = {
+						CreatedOnToolsVersion = 12.5;
+						TestTargetID = 7CEA73C226F4B75000FE3DBA;
+					};
 					7CEA73C226F4B75000FE3DBA = {
 						CreatedOnToolsVersion = 12.5;
 					};
@@ -426,11 +497,19 @@
 			projectRoot = "";
 			targets = (
 				7CEA73C226F4B75000FE3DBA /* tawkGit */,
+				7C50661B26FB01FB00A55861 /* tawkGitTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		7C50661A26FB01FB00A55861 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		7CEA73C126F4B75000FE3DBA /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -446,6 +525,17 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		7C50661826FB01FB00A55861 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7C50662926FB034200A55861 /* MockUserRepository.swift in Sources */,
+				7C50662B26FB320400A55861 /* MockUserListView.swift in Sources */,
+				7C50662726FB02EB00A55861 /* MockUserService.swift in Sources */,
+				7C50661F26FB01FB00A55861 /* tawkGitTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		7CEA73BF26F4B75000FE3DBA /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -509,6 +599,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		7C50662226FB01FB00A55861 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7CEA73C226F4B75000FE3DBA /* tawkGit */;
+			targetProxy = 7C50662126FB01FB00A55861 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		7CEA73D126F4B75200FE3DBA /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -521,6 +619,44 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		7C50662326FB01FB00A55861 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = tawkGitTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = dev.nazmul.tawkGitTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/tawkGit.app/tawkGit";
+			};
+			name = Debug;
+		};
+		7C50662426FB01FB00A55861 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = tawkGitTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = dev.nazmul.tawkGitTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/tawkGit.app/tawkGit";
+			};
+			name = Release;
+		};
 		7CEA73D526F4B75200FE3DBA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -684,6 +820,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		7C50662526FB01FB00A55861 /* Build configuration list for PBXNativeTarget "tawkGitTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7C50662326FB01FB00A55861 /* Debug */,
+				7C50662426FB01FB00A55861 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		7CEA73BE26F4B75000FE3DBA /* Build configuration list for PBXProject "tawkGit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
