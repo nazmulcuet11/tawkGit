@@ -134,7 +134,7 @@ class CoreDataUserRepository: UserRepository {
         }
     }
 
-    func saveUserProfile(_ networkModel: UserProfileNetworkModel, completion: Completion<UserProfile?>?) {
+    func saveNetworkUserProfile(_ networkModel: UserProfileNetworkModel, completion: Completion<UserProfile?>?) {
         stack.perform(on: .background) { context in
             let userProfileMO = self.populateUserProfile(networkModel, in: context)
             self.stack.saveContext()

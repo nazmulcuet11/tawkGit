@@ -102,7 +102,7 @@ class UserProfilePresenter {
     // MARK: - Helpers
 
     private func processNetworkProfile(_ networkModel: UserProfileNetworkModel) {
-        repository.saveUserProfile(networkModel) {
+        repository.saveNetworkUserProfile(networkModel) {
             [weak self] userProfile in
             guard let self = self,
                   let userProfile = userProfile

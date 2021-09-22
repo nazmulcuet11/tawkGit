@@ -18,7 +18,7 @@ protocol UserRepository {
     func saveNetworkUser(_ networkModel: UserNetworkModel, completion: Completion<User?>?)
     func saveNetworkUsers(_ networkModels: [UserNetworkModel], completion: Completion<[User]>?)
     func saveUserProfile(_ userProfile: UserProfile, completion: Completion<Bool>?)
-    func saveUserProfile(_ networkModel: UserProfileNetworkModel, completion: Completion<UserProfile?>?)
+    func saveNetworkUserProfile(_ networkModel: UserProfileNetworkModel, completion: Completion<UserProfile?>?)
     func getUserProfile(login: String, completion: @escaping Completion<UserProfile?>)
     func searchUsers(searchTerm: String, searchMode: SearchMode, completion: @escaping Completion<[User]>)
 }
@@ -44,7 +44,7 @@ extension UserRepository {
         saveUserProfile(userProfile, completion: completion)
     }
 
-    func saveUserProfile(_ networkModel: UserProfileNetworkModel, completion: Completion<UserProfile?>? = nil) {
-        saveUserProfile(networkModel, completion: completion)
+    func saveNetworkUserProfile(_ networkModel: UserProfileNetworkModel, completion: Completion<UserProfile?>? = nil) {
+        saveNetworkUserProfile(networkModel, completion: completion)
     }
 }
