@@ -43,7 +43,7 @@
 		7C33612426F8C2B300688EC1 /* UserProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C33612326F8C2B300688EC1 /* UserProfileVC.swift */; };
 		7C33612626F8C2E300688EC1 /* UserProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C33612526F8C2E300688EC1 /* UserProfilePresenter.swift */; };
 		7C33612826F8CC9700688EC1 /* StoryboardBased.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C33612726F8CC9700688EC1 /* StoryboardBased.swift */; };
-		7C50661F26FB01FB00A55861 /* tawkGitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C50661E26FB01FB00A55861 /* tawkGitTests.swift */; };
+		7C50661F26FB01FB00A55861 /* UserListPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C50661E26FB01FB00A55861 /* UserListPresenterTests.swift */; };
 		7C50662726FB02EB00A55861 /* MockUserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C50662626FB02EB00A55861 /* MockUserService.swift */; };
 		7C50662926FB034200A55861 /* MockUserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C50662826FB034200A55861 /* MockUserRepository.swift */; };
 		7C50662B26FB320400A55861 /* MockUserListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C50662A26FB320400A55861 /* MockUserListView.swift */; };
@@ -120,7 +120,7 @@
 		7C33612526F8C2E300688EC1 /* UserProfilePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfilePresenter.swift; sourceTree = "<group>"; };
 		7C33612726F8CC9700688EC1 /* StoryboardBased.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryboardBased.swift; sourceTree = "<group>"; };
 		7C50661C26FB01FB00A55861 /* tawkGitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = tawkGitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		7C50661E26FB01FB00A55861 /* tawkGitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tawkGitTests.swift; sourceTree = "<group>"; };
+		7C50661E26FB01FB00A55861 /* UserListPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListPresenterTests.swift; sourceTree = "<group>"; };
 		7C50662026FB01FB00A55861 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7C50662626FB02EB00A55861 /* MockUserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockUserService.swift; sourceTree = "<group>"; };
 		7C50662826FB034200A55861 /* MockUserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockUserRepository.swift; sourceTree = "<group>"; };
@@ -287,7 +287,7 @@
 			isa = PBXGroup;
 			children = (
 				7C50662C26FB320E00A55861 /* Mocks */,
-				7C50661E26FB01FB00A55861 /* tawkGitTests.swift */,
+				7C50661E26FB01FB00A55861 /* UserListPresenterTests.swift */,
 				7C50662026FB01FB00A55861 /* Info.plist */,
 			);
 			path = tawkGitTests;
@@ -532,7 +532,7 @@
 				7C50662926FB034200A55861 /* MockUserRepository.swift in Sources */,
 				7C50662B26FB320400A55861 /* MockUserListView.swift in Sources */,
 				7C50662726FB02EB00A55861 /* MockUserService.swift in Sources */,
-				7C50661F26FB01FB00A55861 /* tawkGitTests.swift in Sources */,
+				7C50661F26FB01FB00A55861 /* UserListPresenterTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

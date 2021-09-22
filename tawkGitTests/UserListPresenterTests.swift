@@ -9,7 +9,7 @@ import Foundation
 import XCTest
 @testable import tawkGit
 
-class UserListPresenterTest: XCTestCase {
+class UserListPresenterTests: XCTestCase {
 
     func test_initialItemCountEmpty() {
         let service = MockUserService()
@@ -84,6 +84,8 @@ class UserListPresenterTest: XCTestCase {
 
         sut.loadUsers()
         waitForExpectations(timeout: 1.0, handler: nil)
+
+        // presenter stores users received from the process
         XCTAssertEqual(sut.users, users)
     }
 }
