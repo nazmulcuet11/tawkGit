@@ -13,8 +13,6 @@
 		7C040E5026F9A4E300B99084 /* UserMO+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C040E4A26F9A4E300B99084 /* UserMO+CoreDataClass.swift */; };
 		7C040E5126F9A4E300B99084 /* UserProfileMO+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C040E4B26F9A4E300B99084 /* UserProfileMO+CoreDataProperties.swift */; };
 		7C040E5226F9A4E300B99084 /* UserMO+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C040E4C26F9A4E300B99084 /* UserMO+CoreDataProperties.swift */; };
-		7C040E5526F9AC3400B99084 /* UserProfile+UserProfileNetworkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C040E5326F9AC3400B99084 /* UserProfile+UserProfileNetworkModel.swift */; };
-		7C040E5626F9AC3400B99084 /* User+UserNetworkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C040E5426F9AC3400B99084 /* User+UserNetworkModel.swift */; };
 		7C040E5826F9E52B00B99084 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C040E5726F9E52B00B99084 /* BaseViewController.swift */; };
 		7C040E5A26F9EB8400B99084 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C040E5926F9EB8400B99084 /* Reachability.swift */; };
 		7C040E5C26F9ED1F00B99084 /* PromtView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C040E5B26F9ED1F00B99084 /* PromtView.swift */; };
@@ -89,8 +87,6 @@
 		7C040E4A26F9A4E300B99084 /* UserMO+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserMO+CoreDataClass.swift"; sourceTree = "<group>"; };
 		7C040E4B26F9A4E300B99084 /* UserProfileMO+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserProfileMO+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		7C040E4C26F9A4E300B99084 /* UserMO+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserMO+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		7C040E5326F9AC3400B99084 /* UserProfile+UserProfileNetworkModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserProfile+UserProfileNetworkModel.swift"; sourceTree = "<group>"; };
-		7C040E5426F9AC3400B99084 /* User+UserNetworkModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User+UserNetworkModel.swift"; sourceTree = "<group>"; };
 		7C040E5726F9E52B00B99084 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		7C040E5926F9EB8400B99084 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		7C040E5B26F9ED1F00B99084 /* PromtView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromtView.swift; sourceTree = "<group>"; };
@@ -245,8 +241,6 @@
 		7C0EA04D26F5EDE5001457C4 /* DataMapping */ = {
 			isa = PBXGroup;
 			children = (
-				7C040E5426F9AC3400B99084 /* User+UserNetworkModel.swift */,
-				7C040E5326F9AC3400B99084 /* UserProfile+UserProfileNetworkModel.swift */,
 				7C040E6426FA357A00B99084 /* UserCellViewModel+TableViewItem.swift */,
 			);
 			path = DataMapping;
@@ -550,7 +544,6 @@
 				7CD7EDF426F758600004DD70 /* AppConfig.swift in Sources */,
 				7CEA73CB26F4B75000FE3DBA /* UserListVC.swift in Sources */,
 				7C040E4D26F9A4E300B99084 /* UserProfileMO+CoreDataClass.swift in Sources */,
-				7C040E5526F9AC3400B99084 /* UserProfile+UserProfileNetworkModel.swift in Sources */,
 				7CD7EE0026F7AAD80004DD70 /* HTTPURLResponse+Extensions.swift in Sources */,
 				7CD7EDF826F7A3330004DD70 /* HTTPModels.swift in Sources */,
 				7C0EA03B26F5D8C6001457C4 /* NavigationController.swift in Sources */,
@@ -564,7 +557,6 @@
 				7CD7EE0826F7B3DD0004DD70 /* UIImageView+Extension.swift in Sources */,
 				7CD7EDF026F73EB10004DD70 /* AsyncOperation.swift in Sources */,
 				7C040E6526FA357A00B99084 /* UserCellViewModel+TableViewItem.swift in Sources */,
-				7C040E5626F9AC3400B99084 /* User+UserNetworkModel.swift in Sources */,
 				7C040E4E26F9A4E300B99084 /* MediaMO+CoreDataClass.swift in Sources */,
 				7CD7EDF226F742CA0004DD70 /* DataTaskOperation.swift in Sources */,
 				7C33612426F8C2B300688EC1 /* UserProfileVC.swift in Sources */,

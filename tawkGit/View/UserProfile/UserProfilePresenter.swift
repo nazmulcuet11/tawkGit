@@ -102,19 +102,18 @@ class UserProfilePresenter {
     // MARK: - Helpers
 
     private func processNetworkProfile(_ networkModel: UserProfileNetworkModel) {
-        DispatchQueue.main.async {
-            let userProfile: UserProfile
-            if let existingProfile = self.userProfile {
-                userProfile = existingProfile
-                userProfile.transferChanges(from: networkModel)
-            } else {
-                userProfile = UserProfile(from: networkModel)
+        repository.saveUserProfile(networkModel) {
+            [weak self] userProfile in
+            guard let self = self,
+                  let userProfile = userProfile
+            else {
+                return
             }
 
-            self.repository.saveUserProfile(userProfile)
-
-            self.userProfile = userProfile
-            self.view?.update(user: self.user, profile: userProfile)
+            DispatchQueue.main.async {
+                self.userProfile = userProfile
+                self.view?.update(user: self.user, profile: userProfile)
+            }
         }
     }
 

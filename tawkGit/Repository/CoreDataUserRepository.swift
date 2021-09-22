@@ -134,6 +134,14 @@ class CoreDataUserRepository: UserRepository {
         }
     }
 
+    func saveUserProfile(_ networkModel: UserProfileNetworkModel, completion: Completion<UserProfile?>?) {
+        stack.perform(on: .background) { context in
+            let userProfileMO = self.populateUserProfile(networkModel, in: context)
+            self.stack.saveContext()
+            completion?(userProfileMO.toUserProfile())
+        }
+    }
+
     func searchUsers(searchTerm: String, searchMode: SearchMode, completion: @escaping Completion<[User]>) {
         fatalError("Not Implemented")
     }
@@ -217,6 +225,28 @@ class CoreDataUserRepository: UserRepository {
         userProfileMO.company = userProfile.company
         userProfileMO.blog = userProfile.blog
         userProfileMO.location = userProfile.location
+
+        return userProfileMO
+    }
+
+    @discardableResult
+    private func populateUserProfile(_ networkModel: UserProfileNetworkModel, in context: NSManagedObjectContext) -> UserProfileMO {
+        let userProfileMO: UserProfileMO
+        if let existingUserProfileMO = getUserProfileMO(login: networkModel.login, context: context) {
+            userProfileMO = existingUserProfileMO
+        } else {
+            userProfileMO = UserProfileMO(context: context)
+        }
+
+        userProfileMO.userId = Int64(networkModel.id)
+        userProfileMO.username = networkModel.login
+        userProfileMO.avatarURL = networkModel.avatarURL
+        userProfileMO.followers = Int64(networkModel.followers)
+        userProfileMO.following = Int64(networkModel.following)
+        userProfileMO.name = networkModel.name
+        userProfileMO.company = networkModel.company
+        userProfileMO.blog = networkModel.blog
+        userProfileMO.location = networkModel.location
 
         return userProfileMO
     }
