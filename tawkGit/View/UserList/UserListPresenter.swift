@@ -11,7 +11,7 @@ protocol UserListView: AnyObject {
     func showLoader()
     func hideLoader()
     func reloadItems()
-    func reloadItems(at indexes: [Int])
+    func reloadItems(at indices: [Int])
     func appendItems(newItems: [TableViewItem])
 }
 
@@ -124,7 +124,6 @@ class UserListPresenter {
             case .search:
                 break
         }
-
     }
 
     // MARK: - Helpers

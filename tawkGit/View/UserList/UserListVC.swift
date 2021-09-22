@@ -150,8 +150,8 @@ extension UserListVC: UserListView {
         tableView.reloadData()
     }
 
-    func reloadItems(at indexes: [Int]) {
-        let indexPathsToReload = indexes.map({ IndexPath(row: $0, section: 0) })
+    func reloadItems(at indices: [Int]) {
+        let indexPathsToReload = indices.map({ IndexPath(row: $0, section: 0) })
         tableView.reloadRows(at: indexPathsToReload, with: .automatic)
     }
 
