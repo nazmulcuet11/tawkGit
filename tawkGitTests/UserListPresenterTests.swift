@@ -64,7 +64,7 @@ class UserListPresenterTests: XCTestCase {
         let exp4 = expectation(description: "call repository to save data received from network")
         repository.saveNetworkUsersCalled = { networkData, completion in
             // check same data that is recieved from network is passed to repository for persisting
-            XCTAssertEqual(networkData, networkData)
+            XCTAssertEqual(networkData, networkUsers)
             // repository returns user models after persisting
             DispatchQueue.global().async { completion?(users) }
             exp4.fulfill()
@@ -99,13 +99,5 @@ fileprivate extension UserNetworkModel {
             note: nil,
             profileVisited: false
         )
-    }
-}
-
-extension UserNetworkModel: Equatable {
-    public static func == (lhs: UserNetworkModel, rhs: UserNetworkModel) -> Bool {
-        return lhs.id == rhs.id
-            && lhs.login == rhs.login
-            && lhs.avatarURL == rhs.avatarURL
     }
 }

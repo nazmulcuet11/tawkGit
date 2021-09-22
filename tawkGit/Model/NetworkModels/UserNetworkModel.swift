@@ -19,4 +19,12 @@ struct UserNetworkModel: Decodable {
     }
 }
 
+extension UserNetworkModel: Equatable {
+    public static func == (lhs: UserNetworkModel, rhs: UserNetworkModel) -> Bool {
+        return lhs.id == rhs.id
+            && lhs.login == rhs.login
+            && lhs.avatarURL == rhs.avatarURL
+    }
+}
+
 typealias UserListNetworkModel = [UserNetworkModel]

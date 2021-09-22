@@ -17,6 +17,7 @@ class MockUserRepository: UserRepository {
     var saveNetworkUserCalled: ((UserNetworkModel, Completion<User?>?) -> Void)? = nil
     var saveNetworkUsersCalled: (([UserNetworkModel], Completion<[User]>?) -> Void)? = nil
     var saveUserProfileCalled: ((UserProfile, Completion<Bool>?) -> Void)? = nil
+    var saveNetworkUserProfileCalled: ((UserProfileNetworkModel, Completion<UserProfile?>?) -> Void)? = nil
     var getUserProfileCalled: ((String, @escaping Completion<UserProfile?>) -> Void)? = nil
     var searchUsersCalled: ((String, SearchMode, @escaping Completion<[User]>) -> Void)? = nil
 
@@ -52,6 +53,9 @@ class MockUserRepository: UserRepository {
         saveUserProfileCalled?(userProfile, completion)
     }
 
+    func saveNetworkUserProfile(_ networkModel: UserProfileNetworkModel, completion: Completion<UserProfile?>?) {
+        saveNetworkUserProfileCalled?(networkModel, completion)
+    }
     func getUserProfile(login: String, completion: @escaping Completion<UserProfile?>) {
         getUserProfileCalled?(login, completion)
     }

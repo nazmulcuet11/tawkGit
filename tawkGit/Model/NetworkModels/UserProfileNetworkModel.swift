@@ -30,3 +30,17 @@ struct UserProfileNetworkModel: Decodable {
         case location
     }
 }
+
+extension UserProfileNetworkModel: Equatable {
+    public static func == (lhs: UserProfileNetworkModel, rhs: UserProfileNetworkModel) -> Bool {
+        return lhs.id == rhs.id
+            && lhs.login == rhs.login
+            && lhs.avatarURL == rhs.avatarURL
+            && lhs.followers == rhs.followers
+            && lhs.following == rhs.following
+            && lhs.name == rhs.name
+            && lhs.company == rhs.company
+            && lhs.blog == rhs.blog
+            && lhs.location == rhs.location
+    }
+}

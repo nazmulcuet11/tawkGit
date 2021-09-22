@@ -22,7 +22,7 @@ class UserProfilePresenter {
     private let user: User
     private let reachability: Reachability?
 
-    private var userProfile: UserProfile?
+    private(set) var userProfile: UserProfile?
     
     init(
         service: UserService,

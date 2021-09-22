@@ -45,6 +45,8 @@
 		7C50662726FB02EB00A55861 /* MockUserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C50662626FB02EB00A55861 /* MockUserService.swift */; };
 		7C50662926FB034200A55861 /* MockUserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C50662826FB034200A55861 /* MockUserRepository.swift */; };
 		7C50662B26FB320400A55861 /* MockUserListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C50662A26FB320400A55861 /* MockUserListView.swift */; };
+		7CB1356D26FB705B001D1FD6 /* UserProfilePresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB1356C26FB705B001D1FD6 /* UserProfilePresenterTests.swift */; };
+		7CB1356F26FB7117001D1FD6 /* MockUserProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB1356E26FB7117001D1FD6 /* MockUserProfileView.swift */; };
 		7CD7EDEE26F739C30004DD70 /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD7EDED26F739C30004DD70 /* HTTPClient.swift */; };
 		7CD7EDF026F73EB10004DD70 /* AsyncOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD7EDEF26F73EB10004DD70 /* AsyncOperation.swift */; };
 		7CD7EDF226F742CA0004DD70 /* DataTaskOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD7EDF126F742CA0004DD70 /* DataTaskOperation.swift */; };
@@ -121,6 +123,8 @@
 		7C50662626FB02EB00A55861 /* MockUserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockUserService.swift; sourceTree = "<group>"; };
 		7C50662826FB034200A55861 /* MockUserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockUserRepository.swift; sourceTree = "<group>"; };
 		7C50662A26FB320400A55861 /* MockUserListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockUserListView.swift; sourceTree = "<group>"; };
+		7CB1356C26FB705B001D1FD6 /* UserProfilePresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfilePresenterTests.swift; sourceTree = "<group>"; };
+		7CB1356E26FB7117001D1FD6 /* MockUserProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockUserProfileView.swift; sourceTree = "<group>"; };
 		7CD7EDED26F739C30004DD70 /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
 		7CD7EDEF26F73EB10004DD70 /* AsyncOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncOperation.swift; sourceTree = "<group>"; };
 		7CD7EDF126F742CA0004DD70 /* DataTaskOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTaskOperation.swift; sourceTree = "<group>"; };
@@ -282,6 +286,7 @@
 			children = (
 				7C50662C26FB320E00A55861 /* Mocks */,
 				7C50661E26FB01FB00A55861 /* UserListPresenterTests.swift */,
+				7CB1356C26FB705B001D1FD6 /* UserProfilePresenterTests.swift */,
 				7C50662026FB01FB00A55861 /* Info.plist */,
 			);
 			path = tawkGitTests;
@@ -293,6 +298,7 @@
 				7C50662626FB02EB00A55861 /* MockUserService.swift */,
 				7C50662826FB034200A55861 /* MockUserRepository.swift */,
 				7C50662A26FB320400A55861 /* MockUserListView.swift */,
+				7CB1356E26FB7117001D1FD6 /* MockUserProfileView.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -526,7 +532,9 @@
 				7C50662926FB034200A55861 /* MockUserRepository.swift in Sources */,
 				7C50662B26FB320400A55861 /* MockUserListView.swift in Sources */,
 				7C50662726FB02EB00A55861 /* MockUserService.swift in Sources */,
+				7CB1356D26FB705B001D1FD6 /* UserProfilePresenterTests.swift in Sources */,
 				7C50661F26FB01FB00A55861 /* UserListPresenterTests.swift in Sources */,
+				7CB1356F26FB7117001D1FD6 /* MockUserProfileView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
