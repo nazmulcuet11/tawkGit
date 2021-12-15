@@ -39,11 +39,8 @@ class AppFactory {
             queue: networkingQueue
         )
 
-        let coreDataWritingQueue = DispatchQueue(label: "CORE_DATA_WRITING_QUEUE")
-
         let coreDataStack = CoreDataStack(
-            modelName: AppConfig.CoreData.modelName,
-            writingQueue: coreDataWritingQueue
+            modelName: AppConfig.CoreData.modelName
         )
 
         mediaRepository = CoreDataMediaRepository(

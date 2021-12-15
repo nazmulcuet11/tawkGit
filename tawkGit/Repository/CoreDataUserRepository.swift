@@ -17,7 +17,7 @@ class CoreDataUserRepository: UserRepository {
     }
 
     func getAllUsers(completion: @escaping Completion<[User]>) {
-        stack.perform(on: .main) { context in
+        stack.perform { context in
 
             let request: NSFetchRequest<UserMO> = UserMO.fetchRequest()
 
@@ -37,7 +37,7 @@ class CoreDataUserRepository: UserRepository {
     }
 
     func getUsers(since: Int, limit: Int, completion: @escaping Completion<[User]>) {
-        stack.perform(on: .main) { context in
+        stack.perform { context in
 
             let request: NSFetchRequest<UserMO> = UserMO.fetchRequest()
 
@@ -62,7 +62,7 @@ class CoreDataUserRepository: UserRepository {
 
     func getUser(id: Int, completion: @escaping Completion<User?>) {
 
-        stack.perform(on: .main) { context in
+        stack.perform { context in
             guard let userMo = self.getUserMO(id: id, context: context) else {
                 completion(nil)
                 return
@@ -72,7 +72,7 @@ class CoreDataUserRepository: UserRepository {
     }
 
     func saveUser(_ user: User, completion: Completion<Bool>?) {
-        stack.perform(on: .background) { context in
+        stack.perform { context in
 
             self.populateUser(user, in: context)
             self.stack.saveContext()
@@ -81,7 +81,7 @@ class CoreDataUserRepository: UserRepository {
     }
 
     func saveUsers(_ users: [User], completion: Completion<Bool>?) {
-        stack.perform(on: .background) { context in
+        stack.perform { context in
 
             for user in users {
                 self.populateUser(user, in: context)
@@ -92,7 +92,7 @@ class CoreDataUserRepository: UserRepository {
     }
 
     func saveNetworkUser(_ networkModel: UserNetworkModel, completion: Completion<User?>?) {
-        stack.perform(on: .background) { context in
+        stack.perform { context in
             let userMO = self.populateUser(networkModel, in: context)
             self.stack.saveContext()
             completion?(userMO.toUser())
@@ -100,7 +100,7 @@ class CoreDataUserRepository: UserRepository {
     }
 
     func saveNetworkUsers(_ networkModels: [UserNetworkModel], completion: Completion<[User]>?) {
-        stack.perform(on: .background) { context in
+        stack.perform { context in
             var users = [User]()
             for model in networkModels {
                 let userMO = self.populateUser(model, in: context)
@@ -114,7 +114,7 @@ class CoreDataUserRepository: UserRepository {
     }
 
     func getUserProfile(login: String, completion: @escaping Completion<UserProfile?>) {
-        stack.perform(on: .main) { context in
+        stack.perform { context in
 
             guard let userProfileMO = self.getUserProfileMO(login: login, context: context) else {
                 completion(nil)
@@ -127,7 +127,7 @@ class CoreDataUserRepository: UserRepository {
     }
 
     func saveUserProfile(_ userProfile: UserProfile, completion: Completion<Bool>?) {
-        stack.perform(on: .background) { context in
+        stack.perform { context in
             self.populateUserProfile(userProfile, in: context)
             self.stack.saveContext()
             completion?(true)
@@ -135,7 +135,7 @@ class CoreDataUserRepository: UserRepository {
     }
 
     func saveNetworkUserProfile(_ networkModel: UserProfileNetworkModel, completion: Completion<UserProfile?>?) {
-        stack.perform(on: .background) { context in
+        stack.perform { context in
             let userProfileMO = self.populateUserProfile(networkModel, in: context)
             self.stack.saveContext()
             completion?(userProfileMO.toUserProfile())

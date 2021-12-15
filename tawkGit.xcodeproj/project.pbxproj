@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		38B185AD276A62F0000FE1A9 /* CoreDataStack+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B185AC276A62F0000FE1A9 /* CoreDataStack+Convenience.swift */; };
 		7C040E4D26F9A4E300B99084 /* UserProfileMO+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C040E4726F9A4E300B99084 /* UserProfileMO+CoreDataClass.swift */; };
 		7C040E4E26F9A4E300B99084 /* MediaMO+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C040E4826F9A4E300B99084 /* MediaMO+CoreDataClass.swift */; };
 		7C040E4F26F9A4E300B99084 /* MediaMO+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C040E4926F9A4E300B99084 /* MediaMO+CoreDataProperties.swift */; };
@@ -83,6 +84,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		38B185AC276A62F0000FE1A9 /* CoreDataStack+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreDataStack+Convenience.swift"; sourceTree = "<group>"; };
 		7C040E4726F9A4E300B99084 /* UserProfileMO+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserProfileMO+CoreDataClass.swift"; sourceTree = "<group>"; };
 		7C040E4826F9A4E300B99084 /* MediaMO+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MediaMO+CoreDataClass.swift"; sourceTree = "<group>"; };
 		7C040E4926F9A4E300B99084 /* MediaMO+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MediaMO+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -321,6 +323,7 @@
 				7C33611226F8512500688EC1 /* Models */,
 				7C33611326F8513A00688EC1 /* Schema */,
 				7C33611426F8515800688EC1 /* CoreDataStack.swift */,
+				38B185AC276A62F0000FE1A9 /* CoreDataStack+Convenience.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -557,6 +560,7 @@
 				7C0EA03B26F5D8C6001457C4 /* NavigationController.swift in Sources */,
 				7CEA73C726F4B75000FE3DBA /* AppDelegate.swift in Sources */,
 				7CD7EDFC26F7A53F0004DD70 /* MediaManager.swift in Sources */,
+				38B185AD276A62F0000FE1A9 /* CoreDataStack+Convenience.swift in Sources */,
 				7CD7EDFA26F7A3DD0004DD70 /* DownloadTaskOperation.swift in Sources */,
 				7C0EA03226F5A105001457C4 /* ReusableView.swift in Sources */,
 				7C040E5F26FA10AC00B99084 /* TableViewItem.swift in Sources */,

@@ -16,7 +16,7 @@ class CoreDataMediaRepository: MediaRepository {
     }
 
     func saveMedia(_ media: Media, completion: Completion<Bool>?) {
-        stack.perform(on: .background) { context in
+        stack.perform { context in
 
             let mediaMo: MediaMO
             if let existingMediaMO = self.getMediaMO(remoteURL: media.remoteURL, context: context) {
@@ -34,7 +34,7 @@ class CoreDataMediaRepository: MediaRepository {
     }
 
     func getMedia(remoteURL: URL, completion: @escaping Completion<Media?>) {
-        stack.perform(on: .main) { context in
+        stack.perform { context in
 
             guard let mediaMo =  self.getMediaMO(remoteURL: remoteURL, context: context) else {
                 completion(nil)
